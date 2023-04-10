@@ -23,9 +23,9 @@ public class ModelDavinci003 {
                 .build();
         service.createCompletion(completionRequest).getChoices().forEach(storyArray::add);
 
-        // System.out.println(storyArray);
-        String[] a = storyArray.get(0).getText().split("\n");
-        System.out.println(Arrays.toString(a));
+        System.out.println(storyArray);
+//        String[] a = storyArray.get(0).getText().split("\n");
+//        System.out.println(Arrays.toString(a));
     }
 }
 
