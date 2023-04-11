@@ -2,6 +2,7 @@ package me.project.school.melodymaven.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import me.project.school.melodymaven.domain.auth.dto.request.JoinRequest;
+import me.project.school.melodymaven.domain.auth.exception.AuthException;
 import me.project.school.melodymaven.domain.user.entity.User;
 import me.project.school.melodymaven.domain.user.repository.UserRepository;
 import me.project.school.melodymaven.global.enums.UserRole;
@@ -14,7 +15,9 @@ public class AuthService {
     private final UserRepository userRepository;
 
     public void Join(JoinRequest request)  {
-
+        if(userRepository.existsById(request.getId())) {
+            throw new AuthException.alreadyUserException();
+        }
 
         User user = User.builder()
                 .id(request.getId())
