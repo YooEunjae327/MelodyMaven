@@ -2,6 +2,11 @@ server:
   port: ${PORT}
 
 spring:
+  security:
+    user:
+      name: root
+      password: 1234
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${DB_URL}/melody_maven
@@ -21,3 +26,4 @@ jwt:
   secret:
     access: ${JWT_ACCESS_SECRET}
     refresh: ${JWT_REFRESH_SECRET}
+

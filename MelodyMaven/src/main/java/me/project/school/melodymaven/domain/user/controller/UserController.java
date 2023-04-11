@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("")
 public class UserController {
 
 
-    @GetMapping("")
+    @GetMapping("/test")
     public void Test() {
         System.out.println("security");
     }
