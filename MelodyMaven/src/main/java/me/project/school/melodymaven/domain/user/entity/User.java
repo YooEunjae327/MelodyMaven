@@ -9,6 +9,7 @@ import javax.persistence.*;
 @ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "user")
 public class User {
 
     @Id
@@ -16,6 +17,7 @@ public class User {
     @Column(nullable = false)
     private String id;
 
+    @Column
     private String password;
 
     @Enumerated(EnumType.ORDINAL)
@@ -26,6 +28,7 @@ public class User {
         this.id = id;
         this.password = password;
         this.userRole = userRole;
+
     }
 
 }

@@ -10,8 +10,9 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor()
 public class JoinRequest {
 
-    @NotBlank()
+    @NotBlank
     private String id;
 
+    @NotBlank
     private String password;
 }

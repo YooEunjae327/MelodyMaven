@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests((authorzie) -> authorzie
+        http.csrf().disable().authorizeRequests((authorzie) -> authorzie
                         .antMatchers("/css/**", "/index").permitAll()
                         .anyRequest().permitAll()
                 )

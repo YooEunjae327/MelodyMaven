@@ -16,7 +16,7 @@ public class AuthController {
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
-    public void Join(@RequestBody @Valid JoinRequest request) {
+    public void Join(@RequestBody @Valid JoinRequest request){
         authService.Join(request);
     }
 }
