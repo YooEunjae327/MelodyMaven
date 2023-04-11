@@ -14,16 +14,14 @@ public class AuthService {
     private final UserRepository userRepository;
 
     public void Join(JoinRequest request)  {
-        if(userRepository.existsById(request.getId())) {
 
-        }
 
         User user = User.builder()
                 .id(request.getId())
                 .password(request.getPassword())
                 .userRole(UserRole.valueOf("USER"))
                 .build();
-
+        System.out.println(user);
         userRepository.save(user);
     }
 }
