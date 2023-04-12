@@ -16,7 +16,7 @@ public class AuthService {
 
     public void Join(JoinRequest request)  {
         if(userRepository.existsById(request.getId())) {
-            throw new AuthException.alreadyUserException();
+            throw new AuthException.AlreadyUserException();
         }
 
         User user = User.builder()
@@ -24,7 +24,6 @@ public class AuthService {
                 .password(request.getPassword())
                 .userRole(UserRole.valueOf("USER"))
                 .build();
-        System.out.println(user);
         userRepository.save(user);
     }
 }
