@@ -8,6 +8,7 @@ import me.project.school.melodymaven.domain.auth.exception.AuthException;
 import me.project.school.melodymaven.domain.user.entity.User;
 import me.project.school.melodymaven.domain.user.repository.UserRepository;
 import me.project.school.melodymaven.global.enums.UserRole;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     private final UserRepository userRepository;
+
 
     public void Join(JoinRequest request)  {
         if(userRepository.existsById(request.getId())) {
@@ -30,5 +32,16 @@ public class AuthService {
     }
 
     public void login(LoginRequest request) {
+        BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder(5);
+
+        User user = userRepository.findById(request.getId())
+                .orElseThrow(AuthException.NotFoundUserException::new);
+
+        if(bcrypt.matches(request.getPassword(), user.getPassword())) {
+            throw new AuthException.NotInaccurateInfo();
+        }
+
+
+
     }
 }

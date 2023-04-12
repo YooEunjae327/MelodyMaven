@@ -16,4 +16,9 @@ public class AuthException {
             super(HttpStatus.NOT_FOUND, "존재하지 않는 회원입니다.");
         }
     }
+
+    public static class NotInaccurateInfo extends GlobalException {
+        public NotInaccurateInfo() { super(HttpStatus.BAD_REQUEST, "아이디 또는 비밀번호가 다릅니다."); }
+    }
+
 }

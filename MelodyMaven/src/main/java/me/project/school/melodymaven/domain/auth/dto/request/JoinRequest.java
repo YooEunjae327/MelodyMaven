@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 @ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor()
+@AllArgsConstructor
 public class JoinRequest {
 
     @NotBlank

@@ -1,6 +1,7 @@
 package me.project.school.melodymaven.global.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,14 +18,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests((authorzie) -> authorzie
-                        .antMatchers("/css/**", "/index").permitAll()
-                        .anyRequest().permitAll()
-                )
-                .formLogin((formLogin) -> formLogin
-                        .loginPage("/login")
-                        .failureUrl("/login-error")
-                );
+        http
+                .httpBasic().disable() // rest api이므로  기본설정 안함
+                .csrf().disable()   // csrf 설정안함
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/admin").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/info").hasRole("USER")
+                .anyRequest()
+                .permitAll();
+        http.httpBasic();
     }
 
     @Bean

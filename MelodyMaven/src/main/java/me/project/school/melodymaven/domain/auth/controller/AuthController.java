@@ -22,10 +22,11 @@ public class AuthController {
         authService.Join(request);
     }
 
-//    @PostMapping("/login")
-//    @ResponseStatus(HttpStatus.OK)
-//    public LoginResponse login(@RequestBody @Valid LoginRequest request) {
-//        return authService.login(request);
-//    }
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public void login(@RequestBody @Valid JoinRequest request) {
+        System.out.println(request);
+         //authService.login(request);
+    }
 
 }
