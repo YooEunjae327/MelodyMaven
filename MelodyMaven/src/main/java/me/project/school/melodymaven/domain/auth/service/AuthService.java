@@ -2,6 +2,8 @@ package me.project.school.melodymaven.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import me.project.school.melodymaven.domain.auth.dto.request.JoinRequest;
+import me.project.school.melodymaven.domain.auth.dto.request.LoginRequest;
+import me.project.school.melodymaven.domain.auth.dto.response.LoginResponse;
 import me.project.school.melodymaven.domain.auth.exception.AuthException;
 import me.project.school.melodymaven.domain.user.entity.User;
 import me.project.school.melodymaven.domain.user.repository.UserRepository;
@@ -25,5 +27,8 @@ public class AuthService {
                 .userRole(UserRole.valueOf("USER"))
                 .build();
         userRepository.save(user);
+    }
+
+    public void login(LoginRequest request) {
     }
 }

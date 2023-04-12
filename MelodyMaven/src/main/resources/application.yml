@@ -29,4 +29,6 @@ jwt:
     client-Email: ${JWT_CLIENT_EMAIL}
     client-secret: ${JWT_CLIENT_SECRET}
 
+password :
+    salt : ${EN_SALT}
 
