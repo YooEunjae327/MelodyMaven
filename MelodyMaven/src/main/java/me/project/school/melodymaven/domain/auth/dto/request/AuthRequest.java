@@ -8,10 +8,11 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class LoginRequest {
+public class AuthRequest {
 
     @NotBlank
     private String id;
+
     @NotBlank
     private String password;
 }

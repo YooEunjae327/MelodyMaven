@@ -2,6 +2,7 @@ package me.project.school.melodymaven.global.jwt;
 
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import me.project.school.melodymaven.domain.auth.exception.AuthException;
 import me.project.school.melodymaven.domain.user.entity.User;
 import me.project.school.melodymaven.domain.user.repository.UserRepository;
@@ -15,6 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class TokenProvider {
@@ -23,7 +25,7 @@ public class TokenProvider {
     private final UserRepository userRepository;
     private static final long JWT_ACCESS_EXPIRE = 1000 * 60 * 60 * 24;
     private static final long JWT_REFRESH_EXPIRE = 1000 * 60 * 60 * 24 * 7;
-    private static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.ES256;
+    private static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
 
     public String generateToken(String userId, JwtAuth jwtAuth) {
         Date expiredAt = new Date();
@@ -37,6 +39,7 @@ public class TokenProvider {
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
+
 
         return Jwts.builder()
                 .setClaims(claims)

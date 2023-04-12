@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic().disable() // rest api이므로  기본설정 안함
+                .httpBasic().disable() // rest api 이므로  기본설정 안함
                 .csrf().disable()   // csrf 설정안함
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
@@ -40,8 +40,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new InMemoryUserDetailsManager(userDetails);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
 }
