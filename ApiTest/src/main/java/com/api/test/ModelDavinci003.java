@@ -12,8 +12,6 @@ public class ModelDavinci003 {
         String token = System.getenv("OPENAI_TOKEN");
         OpenAiService service = new OpenAiService(token);
 
-        ArrayList<CompletionChoice> storyArray = new ArrayList<CompletionChoice>();
-
         CompletionRequest completionRequest = CompletionRequest.builder()
                 .prompt("Please recommend 10 songs similar to Do I Wanna Know made by Arctic Monkeys Please tell us the name of the song and who made it")
                 .model("text-davinci-003")
@@ -21,7 +19,7 @@ public class ModelDavinci003 {
                 .echo(true)
                 .n(1)
                 .build();
-        service.createCompletion(completionRequest).getChoices().forEach(storyArray::add);
+        ArrayList<CompletionChoice> storyArray = new ArrayList<CompletionChoice>(service.createCompletion(completionRequest).getChoices());
 
         System.out.println(storyArray);
 //        String[] a = storyArray.get(0).getText().split("\n");
