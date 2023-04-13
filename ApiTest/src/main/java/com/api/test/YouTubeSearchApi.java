@@ -38,23 +38,23 @@ public class YouTubeSearchApi {
         try {
             youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
                 public void initialize(HttpRequest request) throws IOException {}
-            }).setApplicationName("testing").build();
+            }).setApplicationName("youtube-cmdline-search").build();
 
             YouTube.Search.List search = youtube.search().list("id,snippet");
-            String apiKey = System.getenv("GOOGLE_KEY");
-            System.out.println(apiKey);
 
             search.setKey("AIzaSyB3NT5yaz2ZeUcNSaNLuPleNrsK_5lgHRI");
             search.setType("video");
             search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
             search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
             search.setMaxResults(1L);
-            search.setQ("https://www.youtube.com/watch?v=vfrdDch3k_0");
+            search.setSafeSearch("none");
+            search.setQ("https://www.youtube.com/watch?v=8UVNT4wvIGY");
 
             SearchListResponse searchListResponse = search.execute();
             List<SearchResult> searchResultList = searchListResponse.getItems();
 
             if(searchResultList != null) {
+                System.out.println(searchListResponse.getItems().get(0).getSnippet().getTitle());
                 prettyPrint(searchResultList.iterator(), "Ne5tDZ8ePmU");
             }
 

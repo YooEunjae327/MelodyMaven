@@ -32,3 +32,8 @@ jwt:
 password :
     salt : ${EN_SALT}
 
+api:
+  key:
+    youtube : ${API_KEY_YOUTUBE}
+    open-ai : ${API_KEY_OPENAI}
+

@@ -13,7 +13,7 @@ public class ModelDavinci003 {
         OpenAiService service = new OpenAiService(token);
 
         CompletionRequest completionRequest = CompletionRequest.builder()
-                .prompt("Please recommend 10 songs similar to Do I Wanna Know made by Arctic Monkeys Please tell us the name of the song and who made it")
+                .prompt("Gotye - Somebody That Used To Know (feat. Kimbra) Please recommend 10 songs in the same genre as [Official Music Video] The name of the song and the person who made it")
                 .model("text-davinci-003")
                 .maxTokens(120)
                 .echo(true)
@@ -29,3 +29,5 @@ public class ModelDavinci003 {
 
 // Do I Wanna Know by Arctic Monkeys is considered alternative rock., index=0, logprobs=null, finish_reason=length)]
 // What kind of music genre is  Get Lucky by Daft Punk? Just tell me the music genre
+
+// "Please recommend 10 songs similar to Do I Wanna Know made by Arctic Monkeys Please tell us the name of the song and who made it"
