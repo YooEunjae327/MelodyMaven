@@ -6,10 +6,11 @@ import lombok.extern.log4j.Log4j2;
 import me.project.school.melodymaven.domain.auth.exception.AuthException;
 import me.project.school.melodymaven.domain.user.entity.User;
 import me.project.school.melodymaven.domain.user.repository.UserRepository;
-import me.project.school.melodymaven.global.config.AppProperties;
+import me.project.school.melodymaven.global.properties.AppProperties;
 import me.project.school.melodymaven.global.enums.JwtAuth;
 import me.project.school.melodymaven.global.exception.GlobalException;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 @Log4j2
 @Service
+@Component
 @RequiredArgsConstructor
 public class TokenProvider {
 

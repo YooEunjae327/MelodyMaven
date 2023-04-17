@@ -15,6 +15,7 @@ public class AuthController {
 
     private final AuthService authService;
 
+
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.CREATED)
     public void Join(@RequestBody @Valid AuthRequest request){
@@ -26,5 +27,9 @@ public class AuthController {
     public LoginResponse login(@RequestBody @Valid AuthRequest request) {
          return authService.login(request);
     }
+
+    //@PostMapping("/")
+
+
 
 }
