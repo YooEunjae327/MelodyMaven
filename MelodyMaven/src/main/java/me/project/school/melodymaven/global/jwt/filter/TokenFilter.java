@@ -31,7 +31,8 @@ public class TokenFilter extends OncePerRequestFilter {
             @NotNull HttpServletResponse response,
             @NotNull FilterChain filterChain
     ) throws IOException, ServletException {
-        String token = AuthorizationUtil.extract(request, "Bearer");
+            //String token = AuthorizationUtil.extract(request, "Bearer");
+            String token = AuthorizationUtil.resolveToken(request);
 
         try {
             if (token != null) {

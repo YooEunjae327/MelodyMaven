@@ -19,27 +19,37 @@ public class AuthorizationUtil {
 
     private final UserDetailsService userDetailsService;
     private final AppProperties appProperties;
-
     public static String AUTHORIZATION = "Authorization";
 
     public Authentication getAuthentication(String token) {
         String username = Jwts.parser().setSigningKey(appProperties.getAccessSecret()).parseClaimsJws(token).getBody().getSubject();
+        System.out.println(username);
         UserDetails userDetails = userDetailsService
                 .loadUserByUsername(username);
 
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    public static String extract(HttpServletRequest request, String type) {
-        Enumeration<String> headers = request.getHeaders(AUTHORIZATION);
-
-        while (headers.hasMoreElements()) {
-            String value = headers.nextElement();
-            if (value.toLowerCase().startsWith(type.toLowerCase())) {
-                return value.substring(type.length()).trim();
-            }
+    public static String resolveToken(HttpServletRequest req) {
+        String bearerToken = req.getHeader(AUTHORIZATION);
+        if(bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7);
         }
-
-        return Strings.EMPTY;
+        return null;
     }
+
+//    public static String extract(HttpServletRequest request, String type) {
+//
+//        Enumeration<String> headers = request.getHeaders(AUTHORIZATION);
+//
+//        System.out.println(headers.nextElement());
+//        while (headers.hasMoreElements()) {
+//            String value = headers.nextElement();
+//            if (value.toLowerCase().startsWith(type.toLowerCase())) {
+//                return value.substring(type.length()).trim();
+//            }
+//        }
+//
+//        return Strings.EMPTY;
+//    }
 }

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import me.project.school.melodymaven.global.jwt.TokenProvider;
 import me.project.school.melodymaven.global.utils.AuthorizationUtil;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,35 +21,41 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+@Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthorizationUtil authorizationUtil;
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Override
+    public void configure (HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable() // rest api 이므로  기본설정 안함
                 .csrf().disable()   // csrf 설정안함
                 .cors().disable()
                 .authorizeRequests()
-                //.antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/admin").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/info").hasRole("USER")
                 .anyRequest().permitAll();
 
-        http.
-                httpBasic();
+
+        //http.httpBasic();
 
         http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//
+//        http
+//                .exceptionHandling()
+//                .accessDeniedHandler()
+//                .authenticationEntryPoint()
 
-       // http
-                //.apply(new TokenSecurityConfig(authorizationUtil));
+        http
+                .apply(new TokenSecurityConfig(authorizationUtil));
 
-        return http.build();
+        //return http.build();
     }
 
 }
