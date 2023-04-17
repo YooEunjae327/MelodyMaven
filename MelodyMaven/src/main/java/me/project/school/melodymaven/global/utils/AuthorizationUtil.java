@@ -1,5 +1,6 @@
 package me.project.school.melodymaven.global.utils;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import me.project.school.melodymaven.global.properties.AppProperties;
@@ -22,11 +23,9 @@ public class AuthorizationUtil {
     public static String AUTHORIZATION = "Authorization";
 
     public Authentication getAuthentication(String token) {
-        String username = Jwts.parser().setSigningKey(appProperties.getAccessSecret()).parseClaimsJws(token).getBody().getSubject();
-        System.out.println(username);
+        String username = (String) Jwts.parser().setSigningKey(appProperties.getAccessSecret()).parseClaimsJws(token).getBody().get("userId");
         UserDetails userDetails = userDetailsService
                 .loadUserByUsername(username);
-
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 

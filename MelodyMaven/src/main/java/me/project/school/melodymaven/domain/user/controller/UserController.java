@@ -8,16 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("")
+//@RequestMapping("")
 public class UserController {
 
     private final TokenProvider tokenProvider;
 
 
-    @GetMapping("/test")
+    @GetMapping("/info")
     public void Test() {
-        System.out.println("security");
-        System.out.println(tokenProvider.validateToken(" "));
+        System.out.println("aa");
+       // System.out.println("security");
+        //System.out.println(tokenProvider.validateToken(" "));
     }
 
 

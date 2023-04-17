@@ -40,9 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/info").hasRole("USER")
                 .anyRequest().permitAll();
 
-
-        //http.httpBasic();
-
         http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -55,7 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .apply(new TokenSecurityConfig(authorizationUtil));
 
-        //return http.build();
     }
 
 }

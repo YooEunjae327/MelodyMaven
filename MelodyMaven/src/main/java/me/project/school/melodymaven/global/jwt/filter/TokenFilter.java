@@ -34,6 +34,7 @@ public class TokenFilter extends OncePerRequestFilter {
             //String token = AuthorizationUtil.extract(request, "Bearer");
             String token = AuthorizationUtil.resolveToken(request);
 
+
         try {
             if (token != null) {
                 Authentication auth = authorizationUtil.getAuthentication(token);
