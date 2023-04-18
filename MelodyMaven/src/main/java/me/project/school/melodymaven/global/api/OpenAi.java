@@ -25,9 +25,7 @@ public class OpenAi {
                 .n(1)
                 .build();
 
-        ArrayList<CompletionChoice> storyArray = new ArrayList<CompletionChoice>(service.createCompletion(completionRequest).getChoices());
-
-        return storyArray;
+        return new ArrayList<>(service.createCompletion(completionRequest).getChoices());
     }
 
 }
