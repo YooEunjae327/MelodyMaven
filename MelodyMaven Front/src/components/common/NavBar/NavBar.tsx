@@ -1,4 +1,4 @@
-import { NavBarAboutText, NavBarContainer, NavBarDetailTitle, NavBarSideContainer, NavBarTextWrap, NavBarTitle } from "./style"
+import { NavBarAboutText, NavBarContainer, NavBarSideContainer, NavBarTextWrap } from "./style"
 
 
 const NavBar = () => {
@@ -13,10 +13,7 @@ const NavBar = () => {
     return (
       <NavBarContainer>
         <NavBarSideContainer>
-          <NavBarTitle>
-            <NavBarDetailTitle>Melody</NavBarDetailTitle>
-            <NavBarDetailTitle>Maven</NavBarDetailTitle>
-          </NavBarTitle>
+    
 
           {home.map((value, index) => {
             return (

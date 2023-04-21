@@ -15,28 +15,19 @@ export const NavBarSideContainer = styled.div`
   width: 70%;
   min-height: 120px;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
 `
 
 export const NavBarTextWrap = styled.div`
-  margin-right: 45px;
+  margin-left: 30px;
+  margin-right: 30px;
 `
 
 export const NavBarAboutText = styled.span`
-  align-items: right;
   color: black;
   cursor: pointer;
   font-size: 20px;
-  font-family: 'Pretendard-SemiBold';
+  font-family: 'Pretendard-ExtraLight';
 `
 
-export const NavBarTitle = styled.div`
-  font-size: 35px;
-  flex: 1;
-  font-family: 'Pretendard-Thin' ;
-  margin-left: 20px;
-`
-export const NavBarDetailTitle = styled.span`
-  
-`

@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react"
 import NavBar from "../common/NavBar/NavBar"
-import { MainPageContainer, MainPageRecommendWrap, MainPageSmallIntroduce, MainPageUrlInput, MainPageTitleContent, MaingPageAnalysisWrap } from "./style"
+import { MainPageContainer, MainPageRecommendWrap, MainPageSmallIntroduce, MainPageUrlInput, MainPageTitleContent } from "./style"
 
 const Main = () => {
     const [number, setNumber] = useState(0)
@@ -39,21 +39,12 @@ const Main = () => {
         <NavBar />
         <MainPageContainer>
           <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
-          <MainPageRecommendWrap>
-              <MainPageTitleContent>
-                유튜브 URL를 넣어주세요
-              </MainPageTitleContent>
-                <MainPageUrlInput type="text" placeholder="Please put in a YouTube link.." />
-              <MaingPageAnalysisWrap>
-                das
-              </MaingPageAnalysisWrap>
-          </MainPageRecommendWrap>
+          <MainPageRecommendWrap>좋아하는 노래와 비슷한 노래를 추천받아 보세요.</MainPageRecommendWrap>
+          <MainPageRecommendWrap>I recommend a song that's similar to you favorite song.</MainPageRecommendWrap>
+          {/* <MainPageUrlInput placeholder="pl" /> */}
         </MainPageContainer>
       </>
     ) 
 }
 
 export default Main
-
-//20 0
-//
