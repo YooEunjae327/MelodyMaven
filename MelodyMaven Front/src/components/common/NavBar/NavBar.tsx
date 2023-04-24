@@ -7,7 +7,9 @@ const NavBar = () => {
       { value : 'ABOUT'},
       { value : 'QnA'},
       { value : 'CHECK WITH SOMEONE'},
-      { value : 'LOGIN'}
+      { value : '-'},
+      { value : 'LOGIN'},
+      { value : "SIGN IN"}
     ]
     
     return (

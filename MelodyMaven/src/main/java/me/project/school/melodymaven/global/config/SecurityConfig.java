@@ -1,8 +1,6 @@
 package me.project.school.melodymaven.global.config;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import me.project.school.melodymaven.global.jwt.TokenProvider;
 import me.project.school.melodymaven.global.utils.AuthorizationUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,15 +9,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -31,9 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure (HttpSecurity http) throws Exception {
         http
+                .cors().configurationSource(configurationSource()).and()
                 .httpBasic().disable() // rest api 이므로  기본설정 안함
-                .csrf().disable()   // csrf 설정안함
-                .cors().disable()
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/admin").hasRole("ADMIN")
@@ -52,6 +47,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .apply(new TokenSecurityConfig(authorizationUtil));
 
+    }
+
+    @Bean
+    CorsConfigurationSource configurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
     }
 
 }

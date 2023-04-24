@@ -1,8 +1,23 @@
 import { useEffect, useState} from "react"
 import NavBar from "../common/NavBar/NavBar"
-import { MainPageContainer, MainPageRecommendWrap, MainPageSmallIntroduce, MainPageUrlInput, MainPageTitleContent } from "./style"
+import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendWrap, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput } from "./style"
+import MainExplain from "./MainExplain/MainExplain"
+import axios from "axios"
 
 const Main = () => {
+
+useEffect(() => {
+    axios
+      .get('http://localhost:4000/recommend?url=https://www.youtube.com/watch?v=pbJxneQzhKU')
+      .then((Response) => {
+        console.log(Response.data)
+      })
+      .catch((Error) => {
+        console.log(Error)
+      })
+}, [])
+
+
     const [number, setNumber] = useState(0)
     const [introduce, setIntroduce] = useState("%")
     const [fiSe, setFiSe] = useState(true) 
@@ -39,10 +54,15 @@ const Main = () => {
         <NavBar />
         <MainPageContainer>
           <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
-          <MainPageRecommendWrap>좋아하는 노래와 비슷한 노래를 추천받아 보세요.</MainPageRecommendWrap>
-          <MainPageRecommendWrap>I recommend a song that's similar to you favorite song.</MainPageRecommendWrap>
-          {/* <MainPageUrlInput placeholder="pl" /> */}
+
+          <MainPageRecommendWrap>I recommend a song that's similar to your favorite song.</MainPageRecommendWrap>
+          <MainPageRecommendKrWrap>좋아하는 노래와 비슷한 노래를 추천받아 보세요.</MainPageRecommendKrWrap>
+          <MainPageRecommendWrap>
+             <MainPageUrlInput placeholder="Please put in a YouTube link here.." />
+             <MainPageUrlButton>click</MainPageUrlButton>
+          </MainPageRecommendWrap>
         </MainPageContainer>
+        <MainExplain />
       </>
     ) 
 }
