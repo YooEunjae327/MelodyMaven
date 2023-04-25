@@ -1,13 +1,14 @@
+import { Navigate } from "react-router-dom"
 import { NavBarAboutText, NavBarContainer, NavBarSideContainer, NavBarTextWrap } from "./style"
 
 
 const NavBar = () => {
+    //const navigate = Navigate()
     const home = [
       { value : 'HOME'},
       { value : 'ABOUT'},
       { value : 'QnA'},
       { value : 'CHECK WITH SOMEONE'},
-      { value : '-'},
       { value : 'LOGIN'},
       { value : "SIGN IN"}
     ]
@@ -20,7 +21,7 @@ const NavBar = () => {
           {home.map((value, index) => {
             return (
               <NavBarTextWrap key={index}>
-                <NavBarAboutText >{value.value}</NavBarAboutText>
+                <NavBarAboutText  >{value.value}</NavBarAboutText>
               </NavBarTextWrap>
             )
           })}

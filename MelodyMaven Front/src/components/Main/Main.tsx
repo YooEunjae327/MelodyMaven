@@ -1,30 +1,33 @@
 import { useEffect, useState} from "react"
 import NavBar from "../common/NavBar/NavBar"
-import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendWrap, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput } from "./style"
+import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendForm, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput, MaingPageRecommendTitle } from "./style"
 import MainExplain from "./MainExplain/MainExplain"
 import axios from "axios"
 
 const Main = () => {
-
-useEffect(() => {
-    axios
-      .get('http://localhost:4000/recommend?url=https://www.youtube.com/watch?v=pbJxneQzhKU')
-      .then((Response) => {
-        console.log(Response.data)
-      })
-      .catch((Error) => {
-        console.log(Error)
-      })
-}, [])
-
-
     const [number, setNumber] = useState(0)
     const [introduce, setIntroduce] = useState("%")
     const [fiSe, setFiSe] = useState(true) 
     const firstSay = ' I made this site using YouTube search API and chat GPT. It was a school project '
     const secondSay = ' This website recommends similar songs when you type songs! '
 
-    //console.log(firstSay.substring(0, firstSay.length - 1))
+    const urlValue = (event: any) => {
+      event.preventDefault()
+      console.log(event.target.value.value)
+
+        axios
+          .get(`http://localhost:4000/recommend?url=${event.target.value.value}`)
+          .then((Response) => {
+            let a = Response.data.list[0].text
+            const b = a.split('.')
+            console.log(Response.data.list[0].text)
+            console.log(b)
+          })
+          .catch((Error) => {
+            console.log(Error)
+          })
+    }
+
     useEffect(() => {
         if(fiSe === true) {
             if(firstSay.length > introduce.length) {
@@ -53,14 +56,14 @@ useEffect(() => {
       <>
         <NavBar />
         <MainPageContainer>
+          <MaingPageRecommendTitle>
+            Music Recommendation Systems
+          </MaingPageRecommendTitle>
           <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
-
-          <MainPageRecommendWrap>I recommend a song that's similar to your favorite song.</MainPageRecommendWrap>
-          <MainPageRecommendKrWrap>좋아하는 노래와 비슷한 노래를 추천받아 보세요.</MainPageRecommendKrWrap>
-          <MainPageRecommendWrap>
-             <MainPageUrlInput placeholder="Please put in a YouTube link here.." />
-             <MainPageUrlButton>click</MainPageUrlButton>
-          </MainPageRecommendWrap>
+          <MainPageRecommendForm onSubmit={urlValue}>
+            <MainPageUrlInput name="value"  placeholder="Please put in a YouTube link here.." />
+            <MainPageUrlButton type="submit">click</MainPageUrlButton>
+          </MainPageRecommendForm>
         </MainPageContainer>
         <MainExplain />
       </>

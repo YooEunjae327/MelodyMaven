@@ -65,6 +65,7 @@ public class YoutubeSearch {
             if(searchListResponse == null) {
                 throw new YoutubeException.InvalidFormatUrl();
             }
+            System.out.println(searchListResponse.getItems().get(0).getSnippet().getTitle());
             return openAi.recommendMusic(searchListResponse.getItems().get(0).getSnippet().getTitle());
         } catch (GoogleJsonResponseException e) {
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "

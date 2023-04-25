@@ -7,7 +7,8 @@ export const MainExplainContainer = styled.div`
   //background-color: burlywood;
   //background-color: #00CC99;
   //background-color: #00cc33;
-  background-color: #00cc66;
+  //background-color: #00cc66;
+  background-color: #33cc99;
   display: flex;
   justify-content: center;
 `
