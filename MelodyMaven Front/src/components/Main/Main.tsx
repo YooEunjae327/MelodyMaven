@@ -3,11 +3,13 @@ import NavBar from "../common/NavBar/NavBar"
 import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendForm, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput, MaingPageRecommendTitle } from "./style"
 import MainExplain from "./MainExplain/MainExplain"
 import axios from "axios"
+import MainResult from "./MainResult/MainResult"
 
 const Main = () => {
     const [number, setNumber] = useState(0)
     const [introduce, setIntroduce] = useState("%")
     const [fiSe, setFiSe] = useState(true) 
+    const [urlData, setUrlData] = useState(['d ']);
     const firstSay = ' I made this site using YouTube search API and chat GPT. It was a school project '
     const secondSay = ' This website recommends similar songs when you type songs! '
 
@@ -18,10 +20,7 @@ const Main = () => {
         axios
           .get(`http://localhost:4000/recommend?url=${event.target.value.value}`)
           .then((Response) => {
-            let a = Response.data.list[0].text
-            const b = a.split('.')
-            console.log(Response.data.list[0].text)
-            console.log(b)
+            setUrlData(Response.data.list[0].text.split("."))
           })
           .catch((Error) => {
             console.log(Error)
@@ -56,14 +55,23 @@ const Main = () => {
       <>
         <NavBar />
         <MainPageContainer>
+          {urlData.length === 0 ? <>
           <MaingPageRecommendTitle>
             Music Recommendation Systems
           </MaingPageRecommendTitle>
           <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
           <MainPageRecommendForm onSubmit={urlValue}>
-            <MainPageUrlInput name="value"  placeholder="Please put in a YouTube link here.." />
+            <MainPageUrlInput
+              name="value"
+              placeholder="Please put in a YouTube link here.."
+            />
             <MainPageUrlButton type="submit">click</MainPageUrlButton>
           </MainPageRecommendForm>
+          
+          </> : <>
+          {/* {urlData.map((item) => <div>{item}</div>)} */}
+          <MainResult />
+          </>}
         </MainPageContainer>
         <MainExplain />
       </>
