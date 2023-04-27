@@ -55,25 +55,28 @@ const Main = () => {
       <>
         <NavBar />
         <MainPageContainer>
-          {urlData.length === 0 ? <>
-          <MaingPageRecommendTitle>
-            Music Recommendation Systems
-          </MaingPageRecommendTitle>
-          <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
-          <MainPageRecommendForm onSubmit={urlValue}>
-            <MainPageUrlInput
-              name="value"
-              placeholder="Please put in a YouTube link here.."
-            />
-            <MainPageUrlButton type="submit">click</MainPageUrlButton>
-          </MainPageRecommendForm>
-          
-          </> : <>
-          {/* {urlData.map((item) => <div>{item}</div>)} */}
-          <MainResult />
-          </>}
+          {urlData.length === 0 ? (
+            <>
+              <MaingPageRecommendTitle>
+                Music Recommendation Systems
+              </MaingPageRecommendTitle>
+              <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
+              <MainPageRecommendForm onSubmit={urlValue}>
+                <MainPageUrlInput
+                  name="value"
+                  placeholder="Please put in a YouTube link here.."
+                />
+                <MainPageUrlButton type="submit">click</MainPageUrlButton>
+              </MainPageRecommendForm>
+            </>
+          ) : (
+            <>
+              {/* {urlData.map((item) => <div>{item}</div>)} */}
+              <MainResult />
+            </>
+          )}
         </MainPageContainer>
-        <MainExplain />
+        {urlData.length === 0 ? <MainExplain /> : <> </>}
       </>
     ) 
 }
