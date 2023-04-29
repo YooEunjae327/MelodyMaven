@@ -55,7 +55,7 @@ public class YoutubeSearch {
 
             search.setKey(apiKey);
             search.setType("video");
-            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setFields("items(id/kind,id/videoId,snippet/channelTitle,snippet/title,snippet/thumbnails/default/url)");
             search.setSafeSearch("none");
             search.setMaxResults(1L);
             search.setQ(url);
@@ -65,8 +65,7 @@ public class YoutubeSearch {
             if(searchListResponse == null) {
                 throw new YoutubeException.InvalidFormatUrl();
             }
-            System.out.println(searchListResponse.getItems().get(0).getSnippet());
-            return openAi.recommendMusic(searchListResponse.getItems().get(0).getSnippet().getTitle());
+            return openAi.recommendMusic(searchListResponse.getItems().get(0).getSnippet().getTitle(), searchListResponse.getItems().get(0).getSnippet().getChannelTitle());
         } catch (GoogleJsonResponseException e) {
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());

@@ -71,6 +71,7 @@ export const MainResultYoutubeWrap = styled.div`
     border-radius: 30px;
     background-color: black;
     color: white;
+    cursor: pointer;
 `
 export const MainResultSpotifyWrap = styled.div`
     align-items: center;

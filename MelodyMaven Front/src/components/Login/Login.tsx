@@ -1,7 +1,12 @@
+import { LoginPageContainer, LoginPageInputId, LoginPageSideWrap } from "./style"
 
 const Login = () => {
     return(
-        <h1>hi</h1>
+        <LoginPageContainer>
+            <LoginPageSideWrap>
+                <LoginPageInputId />
+            </LoginPageSideWrap>
+        </LoginPageContainer>
     )
 }
 

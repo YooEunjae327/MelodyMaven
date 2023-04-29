@@ -14,11 +14,11 @@ public class OpenAi {
     @Value("${api.key.open-ai}")
     private String token;
 
-    public ArrayList<CompletionChoice> recommendMusic(String music) {
+    public ArrayList<CompletionChoice> recommendMusic(String music, String channelTitle ) {
         OpenAiService service = new OpenAiService(token);
 
         CompletionRequest completionRequest = CompletionRequest.builder()
-                .prompt(music + " Recommend 10 songs with the same genre The answer is just the song and the name")
+                .prompt(channelTitle + ", " +  music + " Recommend 10 songs with the same genre The answer is just the song and the name")
                 .model("text-davinci-003")
                 .maxTokens(200)
                 .echo(true)

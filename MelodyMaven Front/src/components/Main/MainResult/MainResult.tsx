@@ -17,16 +17,18 @@ const MainResult = () => {
 
     useEffect(() => {
         if(title.length !== titleNumber) {
-            setTimeout(() => {setViewTtile(viewTtile + title[titleNumber])}, 100 )
+            setTimeout(() => {setViewTtile(viewTtile + title[titleNumber])}, 200 )
             setTitleNumber(titleNumber + 1)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [viewTtile])
 
     useEffect(() => {
         if(made.length !== madeNumber) {
-            setTimeout(() => {setViewMade(viewMade + made[madeNumber])}, 100 )
+            setTimeout(() => {setViewMade(viewMade + made[madeNumber])}, 200 )
             setMadeNumber(madeNumber + 1)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [viewMade])
 
     return (

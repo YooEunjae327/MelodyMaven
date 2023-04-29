@@ -9,7 +9,7 @@ const Main = () => {
     const [number, setNumber] = useState(0)
     const [introduce, setIntroduce] = useState("%")
     const [fiSe, setFiSe] = useState(true) 
-    const [urlData, setUrlData] = useState(['d ']);
+    const [urlData, setUrlData] = useState([]);
     const firstSay = ' I made this site using YouTube search API and chat GPT. It was a school project '
     const secondSay = ' This website recommends similar songs when you type songs! '
 
@@ -71,7 +71,6 @@ const Main = () => {
             </>
           ) : (
             <>
-              {/* {urlData.map((item) => <div>{item}</div>)} */}
               <MainResult />
             </>
           )}
