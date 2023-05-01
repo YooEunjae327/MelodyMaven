@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components"
+import { SlArrowDownCircle } from 'react-icons/sl'
 
 
 export const MainPageContainer = styled.div`
@@ -18,7 +19,7 @@ export const MaingPageRecommendTitle = styled.div`
     margin-bottom: 20px;
     width: 68%;
     font-family: "Pretendard-Bold";
-    font-size: 50px;
+    font-size: 70px;
     display: flex;
     justify-content: center;
 `
@@ -49,7 +50,7 @@ export const MainPageSmallIntroduce = styled.div`
     padding-bottom: 40px;
     width: 68%;
     font-family: "Pretendard-ExtraLight";
-    font-size: 20px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
 `
@@ -88,3 +89,6 @@ export const MainPageUrlButton = styled.button`
   font-family: 'Pretendard-Bold';
   cursor: pointer;
 `
+
+
+

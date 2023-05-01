@@ -1,13 +1,22 @@
-import { useEffect, useState} from "react"
+import { useEffect, useRef, useState} from "react"
 import NavBar from "../common/NavBar/NavBar"
-import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendForm, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput, MaingPageRecommendTitle } from "./style"
+import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendForm, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput, MaingPageRecommendTitle,  } from "./style"
 import MainExplain from "./MainExplain/MainExplain"
 import axios from "axios"
 import MainResult from "./MainResult/MainResult"
 
+
 const Main = () => {
+    // Scroll function
+    const element = useRef<HTMLDivElement>(null)
+    const onMoveBox = () =>  {
+      element.current?.scrollIntoView({ behavior : 'smooth', block : 'start'})
+    }
+
+
+    // Movement font function
     const [number, setNumber] = useState(0)
-    const [introduce, setIntroduce] = useState("%")
+    const [introduce, setIntroduce] = useState("")
     const [fiSe, setFiSe] = useState(true) 
     const [urlData, setUrlData] = useState([]);
     const firstSay = ' I made this site using YouTube search API and chat GPT. It was a school project '
@@ -33,7 +42,7 @@ const Main = () => {
             setTimeout(() => {  setIntroduce(introduce + firstSay[number]) }, 100)
             setNumber(number + 1)
             } else if(firstSay.length === introduce.length) {
-                setTimeout(() => { setIntroduce("%")}, 2000)
+                setTimeout(() => { setIntroduce("")}, 2000)
                 setNumber(0)
                 setFiSe(false)
             }
@@ -42,7 +51,7 @@ const Main = () => {
                 setTimeout(() => { setIntroduce(introduce + secondSay[number])}, 100)
                 setNumber(number + 1)
             } else if(secondSay.length === introduce.length) {
-                setTimeout(() => { setIntroduce("%")}, 2000)
+                setTimeout(() => { setIntroduce("")}, 2000)
                 setNumber(0)
                 setFiSe(true)
             }
@@ -68,6 +77,7 @@ const Main = () => {
                 />
                 <MainPageUrlButton type="submit">click</MainPageUrlButton>
               </MainPageRecommendForm>
+        
             </>
           ) : (
             <>
