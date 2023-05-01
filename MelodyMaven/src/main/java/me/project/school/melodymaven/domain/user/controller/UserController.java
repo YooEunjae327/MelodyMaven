@@ -16,7 +16,7 @@ public class UserController {
 
     @GetMapping("/info")
     @ResponseStatus(HttpStatus.OK)
-    public UserInfoResponse userInfo() {
+    public void userInfo() {
         userService.userInfo();
     }
 

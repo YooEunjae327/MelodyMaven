@@ -18,13 +18,15 @@ public class OpenAi {
         OpenAiService service = new OpenAiService(token);
 
         CompletionRequest completionRequest = CompletionRequest.builder()
-                .prompt(channelTitle + ", " +  music + " Recommend 10 songs with the same genre The answer is just the song and the name")
+                .prompt("Please recommend 10 songs of the same genre as \"" + music +  "\" For each result, just tell me the song you made")
+                //.temperature((double) 2)
                 .model("text-davinci-003")
-                .maxTokens(200)
+                .maxTokens(256)
                 .echo(true)
                 .n(1)
                 .build();
 
+        System.out.println(new ArrayList<>(service.createCompletion(completionRequest).getChoices()));
         return new ArrayList<>(service.createCompletion(completionRequest).getChoices());
     }
 

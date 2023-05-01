@@ -13,8 +13,8 @@ public class UserService {
     private final UserRepository userRepository;
 
 
-    public UserInfoResponse userInfo() {
-        return User;
+    public void userInfo() {
+        //return User;
     }
 
 }
