@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const LoginPageContainer = styled.div`
+export const SigninPageContainer = styled.div`
   width: 100%;
   height: 1000px;
   align-items: center;
@@ -11,35 +11,36 @@ export const LoginPageContainer = styled.div`
   background-color: beige;
 `
 
-export const LoginPageSideWrap = styled.div`
-    width: 50%;
-    height: 500px;
-    background-color: beige;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
-
-export const LoginPageSnip = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 70px;
- 
-`
-
-export const LoginPageTitle = styled.div`
-    font-size: 50px;
-    font-family: 'Pretendard-Bold';
+export const SigninPageTestingSpan = styled.span`
     margin-bottom: 60px;
+    font-family: 'Pretendard-Thin';
 `
 
+export const SigninPageSideWrap = styled.div`
+  width: 50%;
+  height: 9ㄴ00px;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+export const SigninPageSnip = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 70px;
+`
 
-export const LoginPageInput = styled.input`
+export const SigninPageTitle = styled.div`
+  font-size: 50px;
+  font-family: 'Pretendard-Bold';
+`
+
+export const SigninPageInput = styled.input`
   padding-left: 20px;
   margin-bottom: 20px;
   width: 400px;
@@ -55,7 +56,7 @@ export const LoginPageInput = styled.input`
   }
 `
 
-export const LoginPageButton = styled.button`
+export const SigninPageButton = styled.button`
   width: 400px;
   height: 60px;
   margin-top: 40px;
@@ -73,12 +74,12 @@ export const LoginPageButton = styled.button`
   cursor: pointer;
 `
 
-export const LoginPageExplain = styled.span`
-    margin-top: 20px;
-    font-family: 'Pretendard-Thin';
+export const SigninPageExplain = styled.span`
+  margin-top: 20px;
+  font-family: 'Pretendard-Thin';
 `
 
-export const LoginPageMovementSignin = styled(Link)`
+export const SigninPageMovementLogin = styled(Link)`
   text-decoration-line: none;
   font-family: 'Pretendard-Bold';
   color: #297b00;

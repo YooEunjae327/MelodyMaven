@@ -4,7 +4,7 @@ const Home = [
     { value: 'QnA', path: 'qna' },
     { value: 'CHECK WITH SOMEONE', path: 'inquiry' },
     { value: 'LOG IN', path: 'login' },
-    { value: 'SIGN IN', path: 'sigbn in' },
+    { value: 'SIGN IN', path: 'signin' },
 ]
 
 export default Home
