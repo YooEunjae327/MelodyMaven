@@ -18,7 +18,7 @@ public class OpenAi {
         OpenAiService service = new OpenAiService(token);
 
         CompletionRequest completionRequest = CompletionRequest.builder()
-                .prompt("Please recommend 10 songs of the same genre as \"" + music +  "\" For each result, just tell me the song you made")
+                .prompt("Tell me the genre of the song \"" + music + " - " + channelTitle +   "\" for the first time and recommend 10 songs of the same genre as this one For each result value, just tell me the song you made. Please review it before recommending it and recommend it if you check the existence")
                 //.temperature((double) 2)
                 .model("text-davinci-003")
                 .maxTokens(256)

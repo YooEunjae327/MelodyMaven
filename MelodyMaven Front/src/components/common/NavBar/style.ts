@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 
 export const NavBarContainer = styled.div`
@@ -24,7 +25,8 @@ export const NavBarTextWrap = styled.div`
   margin-right: 30px;
 `
 
-export const NavBarAboutText = styled.span`
+export const NavBarAboutText = styled(Link)`
+  text-decoration-line: none;
   color: black;
   cursor: pointer;
   font-size: 20px;

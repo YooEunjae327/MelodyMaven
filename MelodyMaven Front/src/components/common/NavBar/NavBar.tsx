@@ -1,27 +1,18 @@
 import { Navigate } from "react-router-dom"
 import { NavBarAboutText, NavBarContainer, NavBarSideContainer, NavBarTextWrap } from "./style"
+import Home from "./NavInfo"
 
 
-const NavBar = () => {
-    //const navigate = Navigate()
-    const home = [
-      { value : 'HOME'},
-      { value : 'ABOUT'},
-      { value : 'QnA'},
-      { value : 'CHECK WITH SOMEONE'},
-      { value : 'LOGIN'},
-      { value : "SIGN IN"}
-    ]
-    
+const NavBar = () => {    
     return (
       <NavBarContainer>
         <NavBarSideContainer>
     
 
-          {home.map((value, index) => {
+          {Home.map((value, index) => {
             return (
               <NavBarTextWrap key={index}>
-                <NavBarAboutText  >{value.value}</NavBarAboutText>
+                <NavBarAboutText to={value.path}  >{value.value}</NavBarAboutText>
               </NavBarTextWrap>
             )
           })}
