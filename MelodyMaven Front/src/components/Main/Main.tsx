@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState} from "react"
+import { useEffect, useState} from "react"
 import NavBar from "../common/NavBar/NavBar"
 import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendForm, MainPageSmallIntroduce, MainPageUrlButton, MainPageUrlInput, MaingPageRecommendTitle,  } from "./style"
 import MainExplain from "./MainExplain/MainExplain"
@@ -7,12 +7,6 @@ import MainResult from "./MainResult/MainResult"
 
 
 const Main = () => {
-    // Scroll function
-    const element = useRef<HTMLDivElement>(null)
-    const onMoveBox = () =>  {
-      element.current?.scrollIntoView({ behavior : 'smooth', block : 'start'})
-    }
-
 
     // Movement font function
     const [number, setNumber] = useState(0)
@@ -66,18 +60,20 @@ const Main = () => {
         <MainPageContainer>
           {urlData.length === 0 ? (
             <>
-              <MaingPageRecommendTitle>
-                Music Recommendation Systems
-              </MaingPageRecommendTitle>
+              <MaingPageRecommendTitle>MUSIC.MATCHMAKER</MaingPageRecommendTitle>
               <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
               <MainPageRecommendForm onSubmit={urlValue}>
-                <MainPageUrlInput
+                {/* <MainPageUrlInput
                   name="value"
                   placeholder="Please put in a YouTube link here.."
                 />
+                <MainPageUrlButton type="submit">click</MainPageUrlButton> */}
+                <MainPageUrlInput
+                  name="value"
+                  placeholder="Please put in a YouTube link here.."
+                ></MainPageUrlInput>
                 <MainPageUrlButton type="submit">click</MainPageUrlButton>
               </MainPageRecommendForm>
-        
             </>
           ) : (
             <>

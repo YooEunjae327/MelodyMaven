@@ -6,8 +6,7 @@ export const MainPageContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  //min-height: calc(100vh - 120px) ;
-  min-height: 750px;
+  min-height: calc(100vh - 12px) ;
   background-color: beige;
   align-items: center;
   box-sizing: border-box;
@@ -15,16 +14,17 @@ export const MainPageContainer = styled.div`
 export const MaingPageRecommendTitle = styled.div`
     margin-left: auto;
     margin-right: auto;
-    padding-top: 100px;
+    padding-top: 160px;
     margin-bottom: 20px;
     width: 68%;
     font-family: "Pretendard-Bold";
-    font-size: 70px;
+    font-size: 110px;
     display: flex;
     justify-content: center;
 `
 
 export const MainPageRecommendForm = styled.form`
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   margin-top: 70px;
@@ -49,7 +49,8 @@ export const MainPageSmallIntroduce = styled.div`
     margin-right: auto;
     padding-bottom: 40px;
     width: 68%;
-    font-family: "Pretendard-ExtraLight";
+    height: 50px;
+    font-family: "Pretendard-SemBold";
     font-size: 25px;
     display: flex;
     justify-content: center;
@@ -57,16 +58,17 @@ export const MainPageSmallIntroduce = styled.div`
 
 
 export const MainPageUrlInput = styled.input`
-  padding: 10px;
-  padding-bottom: 5px;
-  font-size: 25px;
-  width: 29%;
+  padding-left: 25px;
+  font-size: 20px;
+  width: 400px;
+  height: 60px;
   margin-top: 100px;
   background-color: beige;
-  border: none;
-  border-bottom: 1px solid gray;
+  border: 1px solid gray;
+  border-radius: 30px;
   font-family: 'Pretendard-Thin';
   display: flex;
+  cursor: pointer;
 
   ::placeholder {
     color: gray;
@@ -78,16 +80,26 @@ export const MainPageUrlInput = styled.input`
 `
 
 export const MainPageUrlButton = styled.button`
-  padding: 10px;
+  width: 150px;
+  height: 60px;
   margin-top: auto;
-  background-color: beige;
-  color: gray;
+  margin-left: 20px;
+  background-color: black;
+  color: white;
   display: flex;
-  font-size: 11px;
+  align-items: center;
+  font-size: 20px;
   justify-content: center;
-  border: 1px solid gray;
-  font-family: 'Pretendard-Bold';
+  border: none;
+  border-radius: 30px;
+  font-family: 'Pretendard-Thin';
   cursor: pointer;
+
+  :hover {
+    background-color: beige;
+    border: 1px solid gray;
+    color: black;
+  }
 `
 
 

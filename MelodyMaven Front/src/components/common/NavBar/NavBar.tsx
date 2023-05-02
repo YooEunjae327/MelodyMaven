@@ -7,8 +7,6 @@ const NavBar = () => {
     return (
       <NavBarContainer>
         <NavBarSideContainer>
-    
-
           {Home.map((value, index) => {
             return (
               <NavBarTextWrap key={index}>

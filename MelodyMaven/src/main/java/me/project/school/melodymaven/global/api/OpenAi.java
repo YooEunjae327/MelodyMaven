@@ -25,8 +25,7 @@ public class OpenAi {
                 .echo(true)
                 .n(1)
                 .build();
-
-        System.out.println(new ArrayList<>(service.createCompletion(completionRequest).getChoices()));
+        
         return new ArrayList<>(service.createCompletion(completionRequest).getChoices());
     }
 
