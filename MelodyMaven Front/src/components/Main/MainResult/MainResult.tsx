@@ -3,13 +3,15 @@ import { MainExplainContainer } from "../MainExplain/style"
 import { MainResultBottomLine, MainResultBottomLineButton, MainResultBottomLineWrap, MainResultContainer, MainResultImg, MainResultImgContainer, MainResultImgInfo, MainResultImgInfoDetail, MainResultImgWrap, MainResultInfo, MainResultInfoDetail, MainResultInfoDetailTitle, MainResultLine, MainResultRecommendSongs, MainResultSpotifyWrap, MainResultUrlContainer, MainResultYoutubeWrap,  } from "./style"
 
 
-const MainResult = () => {
+const MainResult = (test: any) => {
     const [titleNumber, setTitleNumber] = useState(0)
     const [madeNumber, setMadeNumber] = useState(0)
     const [viewTtile, setViewTtile] = useState("")
     const [viewMade, setViewMade] = useState("")
     const title = 'Out of Reach'
     const made = 'BoywithUke'
+
+    console.log(test)
 
     const MoveToTop = () => {
         window.scrollTo({top : 0, behavior: 'smooth'})

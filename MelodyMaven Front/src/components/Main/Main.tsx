@@ -77,7 +77,7 @@ const Main = () => {
             </>
           ) : (
             <>
-              <MainResult />
+              <MainResult info={urlData} />
             </>
           )}
         </MainPageContainer>
