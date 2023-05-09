@@ -4,6 +4,7 @@ import { MainPageContainer, MainPageRecommendKrWrap, MainPageRecommendForm, Main
 import MainExplain from "./MainExplain/MainExplain"
 import axios from "axios"
 import MainResult from "./MainResult/MainResult"
+import { Format } from "./MainResult/MainResultFormat"
 
 
 const Main = () => {
@@ -24,6 +25,7 @@ const Main = () => {
           .get(`http://localhost:4000/recommend?url=${event.target.value.value}`)
           .then((Response) => {
             setUrlData(Response.data.list[0].text.split("."))
+            Format(Response.data.list[0].text.split('.'))
           })
           .catch((Error) => {
             console.log(Error)

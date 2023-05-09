@@ -18,11 +18,11 @@ public class OpenAi {
         OpenAiService service = new OpenAiService(token);
 
         CompletionRequest completionRequest = CompletionRequest.builder()
-                .prompt("When you recommend 10 songs that are the same genre as \"" + music + "\", you can link them to YouTube")
-                //.prompt("Tell me the genre of the song \"" + music + " - " + channelTitle +   "\" for the first time and recommend 10 songs of the same genre as this one For each result value, just tell me the song you made. Please review it before recommending it and recommend it if you check the existence")
-                //.temperature((double) 2)
+                .prompt("Please recommend 10 songs with the same genre as \"" + music +"\" The answer is \"Song - Made\"")
+//                .prompt("Please recommend 10 Doom Metal songs")
+                //.temperature((double) 0.7)
                 .model("text-davinci-003")
-                .maxTokens(256)
+                .maxTokens(526)
                 .echo(true)
                 .n(1)
                 .build();
