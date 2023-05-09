@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import dotenv from 'dotenv' 
 import "./assets/font/Pretendard.css"
 import ReactDOM from 'react-dom/client';
 import App from './App';
