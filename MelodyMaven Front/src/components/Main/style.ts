@@ -93,6 +93,9 @@ export const MainPageUrlButton = styled.button`
   border: none;
   border-radius: 30px;
   font-family: 'Pretendard-Thin';
+
+  word-spacing: 10px;
+  
   cursor: pointer;
 
   :hover {

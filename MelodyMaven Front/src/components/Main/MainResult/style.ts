@@ -102,8 +102,8 @@ export const MainResultImgInfoDetail = styled.p`
 `
 
 export const MainResultImg = styled.img`
-    width: 880px;
-    height: 480px;
+    width: 580px;
+    height: 580px;
     margin-bottom: 20px;
     border-radius: 30px;
 `

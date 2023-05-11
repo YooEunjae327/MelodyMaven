@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ModelDavinci003 {
-    public static void main(String[] args) {
+    public static void main(String[] args) {;
         String token = System.getenv("OPENAI_TOKEN");
         OpenAiService service = new OpenAiService(token);
 

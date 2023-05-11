@@ -14,25 +14,23 @@ const MainResult = (musicInfo : any) => {
     }
 
 
-
     return (
       <MainResultContainer>
-
-        <MainResultImgWrap >
+        <MainResultImgWrap>
           <MainResultInfo>
             <MainResultInfoDetailTitle>#Main</MainResultInfoDetailTitle>
             <MainResultInfoDetail>
-              This is the song you want to recommend. If not, please retry or
-              inquire. From the bottom, there are 10 songs similar to this song.
-              I want you to check and find the song you want song
+              This is the artist you searched. But if it's different, please
+              contact us. There are also artists like him below. If you like it,
+              you can enjoy the music related to them. Good luck!
             </MainResultInfoDetail>
           </MainResultInfo>
           <MainResultLine></MainResultLine>
 
           <MainResultImgContainer>
-            <MainResultImg src="https://img.youtube.com/vi/5NV6Rdv1a3I/maxresdefault.jpg" />
-            <MainResultImgInfo>{title}</MainResultImgInfo>
-            <MainResultImgInfoDetail>{made}</MainResultImgInfoDetail>
+            <MainResultImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b" />
+            <MainResultImgInfo>jamie berry</MainResultImgInfo>
+            <MainResultImgInfoDetail>electro swing</MainResultImgInfoDetail>
 
             <MainResultUrlContainer>
               <MainResultYoutubeWrap>YouTube</MainResultYoutubeWrap>
@@ -41,7 +39,7 @@ const MainResult = (musicInfo : any) => {
           </MainResultImgContainer>
         </MainResultImgWrap>
 
-        {musicInfo.info.map((value : any, index : number) => {
+        {musicInfo.info.map((value: any, index: number) => {
           return (
             <MainResultImgWrap>
               <MainResultInfo>

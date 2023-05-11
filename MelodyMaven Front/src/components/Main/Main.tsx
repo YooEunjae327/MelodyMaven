@@ -14,22 +14,48 @@ const Main = () => {
     const [introduce, setIntroduce] = useState("")
     const [fiSe, setFiSe] = useState(true) 
     const [urlData, setUrlData] = useState([]);
-    const firstSay = ' I made this site using YouTube search API and chat GPT. It was a school project '
+    const firstSay = ' I made this site using YouTube search API and Spotify API. It was a school project '
     const secondSay = ' This website recommends similar songs when you type songs! '
+  
 
     const urlValue = (event: any) => {
       event.preventDefault()
       console.log(event.target.value.value)
+      console.log(process.env.REACT_APP_SPOTIFY_ID)
+      const encode =  btoa(encodeURIComponent(`${process.env.REACT_APP_SPOTIFY_ID} + ':' + ${process.env.REACT_APP_API_SPOTIFY_PASSWORD}`))
 
         axios
-          .get(`http://localhost:4000/recommend?url=${event.target.value.value}`)
+          .post(`https://accounts.spotify.com/api/token`, {
+            headers: {
+              Authorization: 'Basic ' + encode,
+            },
+            params: {
+              grant_type: 'client_credentials',
+            },
+            json : true
+          })
           .then((Response) => {
-            setUrlData(Response.data.list[0].text.split("."))
-            Format(Response.data.list[0].text.split('.'))
+            console.log(Response)
           })
-          .catch((Error) => {
-            console.log(Error)
-          })
+
+        // axios
+        //   .get(
+        //     `https://api.spotify.com/v1/search?q=${event.target.value.value}&type=artist&limit=20&offset=5`,
+        //     {
+        //       headers: {
+        //         Authorization:
+        //           'Bearer ' +
+        //           process.env.REACT_APP_SPOTIFY_PASSWORD,
+        //       },
+        //     }
+        //   )
+        //   .then((Response) => {
+        //     setUrlData(Response.data.list[0].text.split('.'))
+        //     console.log(Response)
+        //   })
+        //   .catch((Error) => {
+        //     console.log(Error)
+        //   })
     }
 
     useEffect(() => {
@@ -62,7 +88,9 @@ const Main = () => {
         <MainPageContainer>
           {urlData.length === 0 ? (
             <>
-              <MaingPageRecommendTitle>MUSIC.MATCHMAKER</MaingPageRecommendTitle>
+              <MaingPageRecommendTitle>
+                MUSIC.MATCHMAKER
+              </MaingPageRecommendTitle>
               <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
               <MainPageRecommendForm onSubmit={urlValue}>
                 {/* <MainPageUrlInput
@@ -72,9 +100,9 @@ const Main = () => {
                 <MainPageUrlButton type="submit">click</MainPageUrlButton> */}
                 <MainPageUrlInput
                   name="value"
-                  placeholder="Please put in a YouTube link here.."
+                  placeholder="Please enter the artist you want here.."
                 ></MainPageUrlInput>
-                <MainPageUrlButton type="submit">click</MainPageUrlButton>
+                <MainPageUrlButton type="submit">submit</MainPageUrlButton>
               </MainPageRecommendForm>
             </>
           ) : (

@@ -36,4 +36,5 @@ api:
   key:
     youtube : ${API_KEY_YOUTUBE}
     open-ai : ${API_KEY_OPENAI}
-
+    spotify_client : ${API_SPOTIFY_CLIENT}
+    spotify_secret : ${API_SPOTIFY_SECRET}

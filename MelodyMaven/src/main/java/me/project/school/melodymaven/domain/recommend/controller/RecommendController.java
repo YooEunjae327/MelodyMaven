@@ -16,4 +16,9 @@ public class RecommendController {
     public RecommendResponse recommend(@RequestParam("url") String url) {
         return recommendService.recommend(url);
     }
+
+    @GetMapping("/Spotify")
+
 }
+
+
