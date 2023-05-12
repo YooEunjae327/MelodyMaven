@@ -29,7 +29,6 @@ dependencies {
     implementation group: 'com.google.http-client', name: 'google-http-client-jackson2', version: '1.43.1'
 
     // Spotify
-    implementation 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
     implementation 'se.michaelthelin.spotify:spotify-web-api-java:8.0.0'
 }
 
