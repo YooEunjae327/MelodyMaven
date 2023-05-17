@@ -13,6 +13,4 @@ public class RecommendTokenRequest {
     @NotBlank
     private String token;
 
-    @NotBlank
-    private String artist;
 }

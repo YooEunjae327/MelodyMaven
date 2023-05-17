@@ -3,8 +3,11 @@ package me.project.school.melodymaven.domain.recommend.controller;
 import lombok.RequiredArgsConstructor;
 import me.project.school.melodymaven.domain.recommend.dto.request.RecommendTokenRequest;
 import me.project.school.melodymaven.domain.recommend.dto.response.RecommendResponse;
+import me.project.school.melodymaven.domain.recommend.dto.response.RecommendTokenResponse;
 import me.project.school.melodymaven.domain.recommend.service.RecommendService;
 import org.springframework.web.bind.annotation.*;
+import se.michaelthelin.spotify.model_objects.specification.Artist;
+import se.michaelthelin.spotify.model_objects.specification.Paging;
 
 import javax.validation.Valid;
 
@@ -20,14 +23,14 @@ public class RecommendController {
         return recommendService.recommend(url);
     }
 
-    @GetMapping("/spotify")
-    public void Analyze(@RequestParam("artist") String artist) {
-        recommendService.Analyze(artist);
+    @GetMapping("/spotify/token")
+    public RecommendTokenResponse Token() {
+        return recommendService.Token();
     }
 
-    @GetMapping("/spotify/artist")
-    public void FindArtist(@RequestBody @Valid RecommendTokenRequest request) {
-        recommendService.FindArtist(request);
+    @GetMapping("/spotify")
+    public Paging<Artist> FindArtist(@RequestParam("artist") String artist, @RequestParam("token") String token ) {
+        return recommendService.FindArtist(token ,artist);
     }
 }
 

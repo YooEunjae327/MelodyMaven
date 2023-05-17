@@ -5,6 +5,7 @@ import MainExplain from "./MainExplain/MainExplain"
 import axios from "axios"
 import MainResult from "./MainResult/MainResult"
 import { Format } from "./MainResult/MainResultFormat"
+import MainResultArtist from "./MainResultArtist/MainResultArtist"
 
 
 const Main = () => {
@@ -13,49 +14,41 @@ const Main = () => {
     const [number, setNumber] = useState(0)
     const [introduce, setIntroduce] = useState("")
     const [fiSe, setFiSe] = useState(true) 
-    const [urlData, setUrlData] = useState([]);
+    const [urlData, setUrlData] = useState(false); // 등록 했을때
     const firstSay = ' I made this site using YouTube search API and Spotify API. It was a school project '
     const secondSay = ' This website recommends similar songs when you type songs! '
-  
+
 
     const urlValue = (event: any) => {
       event.preventDefault()
-      console.log(event.target.value.value)
-      console.log(process.env.REACT_APP_SPOTIFY_ID)
-      const encode =  btoa(encodeURIComponent(`${process.env.REACT_APP_SPOTIFY_ID} + ':' + ${process.env.REACT_APP_API_SPOTIFY_PASSWORD}`))
+        console.log(localStorage.getItem('token'))
+        console.log(event.target.value.value)
+        if(!localStorage.getItem('token')) {
+                axios
+                  .get(`http://localhost:4000/recommend/spotify/token`)
+                  .then((Response) => {
+                    //setUrlData(Response.data.list[0].text.split('.'))
+                    localStorage.setItem('token', Response.data.token)
+                    console.log(Response.data)
+                  })
+                  .catch((Error) => {
+                    console.log(Error)
+                  })
+        } else {
+            axios
+            .get(
+              `http://localhost:4000/recommend/spotify?artist=${event.target.value.value}&token=${localStorage.getItem('token')}`
+            ) 
+            .then((Response) => {
+                console.log(Response)
+                setUrlData(true)
+            })
+            .catch((Error) => {
+              console.log(Error)
+            })
+        }
+          
 
-        axios
-          .post(`https://accounts.spotify.com/api/token`, {
-            headers: {
-              Authorization: 'Basic ' + encode,
-            },
-            params: {
-              grant_type: 'client_credentials',
-            },
-            json : true
-          })
-          .then((Response) => {
-            console.log(Response)
-          })
-
-        // axios
-        //   .get(
-        //     `https://api.spotify.com/v1/search?q=${event.target.value.value}&type=artist&limit=20&offset=5`,
-        //     {
-        //       headers: {
-        //         Authorization:
-        //           'Bearer ' +
-        //           process.env.REACT_APP_SPOTIFY_PASSWORD,
-        //       },
-        //     }
-        //   )
-        //   .then((Response) => {
-        //     setUrlData(Response.data.list[0].text.split('.'))
-        //     console.log(Response)
-        //   })
-        //   .catch((Error) => {
-        //     console.log(Error)
-        //   })
     }
 
     useEffect(() => {
@@ -86,32 +79,26 @@ const Main = () => {
       <>
         <NavBar />
         <MainPageContainer>
-          {urlData.length === 0 ? (
+          <MaingPageRecommendTitle>MUSIC.MATCHMAKER</MaingPageRecommendTitle>
+          <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
+          {!urlData ? (
             <>
-              <MaingPageRecommendTitle>
-                MUSIC.MATCHMAKER
-              </MaingPageRecommendTitle>
-              <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
               <MainPageRecommendForm onSubmit={urlValue}>
-                {/* <MainPageUrlInput
-                  name="value"
-                  placeholder="Please put in a YouTube link here.."
-                />
-                <MainPageUrlButton type="submit">click</MainPageUrlButton> */}
                 <MainPageUrlInput
                   name="value"
                   placeholder="Please enter the artist you want here.."
                 ></MainPageUrlInput>
-                <MainPageUrlButton type="submit">submit</MainPageUrlButton>
+                <MainPageUrlButton type="submit">Submit</MainPageUrlButton>
               </MainPageRecommendForm>
             </>
           ) : (
             <>
-              <MainResult info={urlData} />
+              <MainResultArtist />
+              {/* <MainResult info={urlData} /> */}
             </>
           )}
         </MainPageContainer>
-        {urlData.length === 0 ? <MainExplain /> : <> </>}
+        <MainExplain />
       </>
     ) 
 }

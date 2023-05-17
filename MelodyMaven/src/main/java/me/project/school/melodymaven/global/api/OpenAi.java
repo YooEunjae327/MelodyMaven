@@ -19,8 +19,7 @@ public class OpenAi {
 
         CompletionRequest completionRequest = CompletionRequest.builder()
                 .prompt("Please recommend 10 songs with the same genre as \"" + music +"\" The answer is \"Song - Made\"")
-//                .prompt("Please recommend 10 Doom Metal songs")
-                //.temperature((double) 0.7)
+
                 .model("text-davinci-003")
                 .maxTokens(526)
                 .echo(true)

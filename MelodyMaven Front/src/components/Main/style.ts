@@ -27,7 +27,7 @@ export const MainPageRecommendForm = styled.form`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 70px;
+  margin-top: 40px;
   width: 68%;
   display: flex;
   justify-content: center;
@@ -104,6 +104,4 @@ export const MainPageUrlButton = styled.button`
     color: black;
   }
 `
-
-
 

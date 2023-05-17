@@ -1,5 +1,4 @@
 import { MainExplainContainer, MainExplainInfo, MainExplainWrap, MainExplainTitle, MainExplainYouTubeLogo, MainExplainRightTitle, MainExplainMouse } from "./style"
-import Youtube from "../../../assets/logo/youtube.png"
 import { useState } from "react"
 
 const MainExplain = () => {

@@ -16,9 +16,9 @@ public class SpotifyArtist {
 //    private static final String accessToken = "BQBDyASCgvTt_a1Wr0nTsYMbps2TWZZoV5uBu0aZHXYk6jduoLwRxFn8wlPQc73ZcJa4gDOTfKzidHXXZUCUDsOeGqX-_yf8lV8Zr9FYe4jDFK3fm99k";
 //    private static final String q = "Toamto";
 
+    public Paging<Artist> searchArtists_Sync(String token, String q) {
+        Paging<Artist> outputArtist = null;
 
-
-    public void searchArtists_Sync(String token, String q) {
         final SpotifyApi spotifyApi = new SpotifyApi.Builder()
                 .setAccessToken(token)
                 .build();
@@ -34,10 +34,14 @@ public class SpotifyArtist {
             for(Artist x : artistPaging.getItems()) {
                 System.out.println(x);
             }
+
+            outputArtist = artistPaging;
             System.out.println("Total: " + artistPaging.getTotal());
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+        return outputArtist;
     }
 
 

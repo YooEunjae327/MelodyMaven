@@ -18,7 +18,7 @@ export const SigninPageTestingSpan = styled.span`
 
 export const SigninPageSideWrap = styled.div`
   width: 50%;
-  height: 9ㄴ00px;
+  height: 900px;
   background-color: beige;
   display: flex;
   flex-direction: column;
