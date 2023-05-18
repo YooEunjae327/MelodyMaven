@@ -1,56 +1,90 @@
-import { useEffect, useRef, useState } from "react"
-import { MainPageResultArtist, MainPageResultArtistContainer, MainPageResultArtistDetail, MainPageResultImg, MainPageResultInfo, MainPageResultInfoName, MainPageResultInfoWrap, MainPageResultLeftArrowIcon, MainPageResultPlayImg, MainPageResultPlayImgIcon, MainPageResultRightArrowIcon, MainPageResultWrap } from "./style"
-import styled from "styled-components"
+import { useEffect, useRef, useState } from 'react'
+import {
+  MainPageResultArtist,
+  MainPageResultArtistContainer,
+  MainPageResultArtistDetail,
+  MainPageResultImg,
+  MainPageResultInfo,
+  MainPageResultInfoName,
+  MainPageResultInfoWrap,
+  MainPageResultLeftArrowIcon,
+  MainPageResultPlayImg,
+  MainPageResultPlayImgIcon,
+  MainPageResultRightArrowIcon,
+  MainPageResultWrap,
+  MaingPageResultTitle,
+} from './style'
+import styled from 'styled-components'
 
-const MainResultArtist = (urlValue : any) => {
-    console.log(urlValue)
-    const [detalInfo, setDetailInfo] = useState(false)
-    const arr = [
-      'tomat',
-      'tomt2',
-      'tomat3',
-      'tomat4',
-      'tomato',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-   
-    ]
-  
 
-    const detail = () => {
-        setDetailInfo(true)
 
-    }
+const MainResultArtist = (artist: any) => {
+  const [detalInfo, setDetailInfo] = useState(false) // 디테일 useState
 
-    const fourArtits = () => {
-      const result = []
-      for(let i = 0; i < 4; i++) {
-        result.push(
-          <MainPageResultArtist>
-            <MainPageResultPlayImg>
-              <MainPageResultPlayImgIcon />
-            </MainPageResultPlayImg>
-            <MainPageResultImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b"></MainPageResultImg>
-            <MainPageResultInfoWrap>
-              <MainPageResultInfoName>Jame Berry</MainPageResultInfoName>
-              <MainPageResultInfo>Artsits</MainPageResultInfo>
-            </MainPageResultInfoWrap>
-          </MainPageResultArtist>
-        )
+  const MainResultChange = (e : any,) => {
+      e.preventDefault()
+      console.log(e)
+  }
+
+  // detail change
+  const detail = () => {
+    setDetailInfo(true)
+  }
+
+  // name format
+  // eslint-disable-next-line no-restricted-globals
+  const formatName = (name: String) => {
+    const arr = name.split('')
+    let value = ''
+    for (let i = 0; i < arr.length; i++) {
+      if (i < 15) value += arr[i]
+      else {
+        value += '...'
+        break
       }
-
-      return result
     }
 
-    return (
-      <MainPageResultArtistContainer>
-        <div>
+    return value
+  }
 
+  const fourArtits = () => {
+    const result = []
+    for (let i = 0; i < 4; i++) {
+      result.push(
+        <MainPageResultArtist key={i} onClick={(e) => {MainResultChange(e)}}>
+          <MainPageResultPlayImg>
+            <MainPageResultPlayImgIcon />
+          </MainPageResultPlayImg>
+          <MainPageResultImg
+            src={
+              artist.info[i].images[0]
+                ? artist.info[i].images[0].url
+                : 'https://play-lh.googleusercontent.com/eN0IexSzxpUDMfFtm-OyM-nNs44Y74Q3k51bxAMhTvrTnuA4OGnTi_fodN4cl-XxDQc'
+            }
+          ></MainPageResultImg>
+          <MainPageResultInfoWrap>
+            <MainPageResultInfoName>
+              {artist.info[i].name.length < 15
+                ? artist.info[i].name
+                : formatName(artist.info[i].name)}
+            </MainPageResultInfoName>
+            <MainPageResultInfo>
+              {artist.info[i].genres[0] ? artist.info[i].genres[0] : 'Artist'}
+            </MainPageResultInfo>
+          </MainPageResultInfoWrap>
+        </MainPageResultArtist>
+      )
+    }
+
+    return result
+  }
+
+  return (
+    <MainPageResultArtistContainer>
+      <MaingPageResultTitle>
+        Please choose the artist you're looking for
+      </MaingPageResultTitle>
+      <div>
         {!detalInfo ? (
           <>
             <MainPageResultWrap>{fourArtits()}</MainPageResultWrap>
@@ -60,25 +94,37 @@ const MainResultArtist = (urlValue : any) => {
           </>
         ) : (
           <>
-          <MainPageResultWrap>
-              {arr.map((test, i) => (
-                <MainPageResultArtist>
+            <MainPageResultWrap>
+              {artist.info.map((value: any, i: number) => (
+                <MainPageResultArtist key={i - 1}>
                   <MainPageResultPlayImg>
                     <MainPageResultPlayImgIcon />
                   </MainPageResultPlayImg>
-                  <MainPageResultImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b"></MainPageResultImg>
+                  <MainPageResultImg
+                    src={
+                      value.images[0]
+                        ? value.images[0].url
+                        : 'https://play-lh.googleusercontent.com/eN0IexSzxpUDMfFtm-OyM-nNs44Y74Q3k51bxAMhTvrTnuA4OGnTi_fodN4cl-XxDQc'
+                    }
+                  />
                   <MainPageResultInfoWrap>
-                    <MainPageResultInfoName>Jame Berry</MainPageResultInfoName>
-                    <MainPageResultInfo>Artsits</MainPageResultInfo>
+                    <MainPageResultInfoName>
+                      {value.name.length < 15
+                        ? value.name
+                        : formatName(value.name)}
+                    </MainPageResultInfoName>
+                    <MainPageResultInfo>
+                      {value.genres[0] ? value.genres[0] : 'Artist'}
+                    </MainPageResultInfo>
                   </MainPageResultInfoWrap>
                 </MainPageResultArtist>
               ))}
-              </MainPageResultWrap>
+            </MainPageResultWrap>
           </>
         )}
-        </div>
-      </MainPageResultArtistContainer>
-    )
+      </div>
+    </MainPageResultArtistContainer>
+  )
 }
 
 export default MainResultArtist

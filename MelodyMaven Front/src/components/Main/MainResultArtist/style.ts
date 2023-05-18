@@ -1,12 +1,22 @@
 import styled, { keyframes } from 'styled-components'
 import { MdPlayArrow, MdOutlineKeyboardArrowRight } from 'react-icons/md'
 
+const boxFade = keyframes`
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+`
+
 export const MainPageResultArtistContainer = styled.div`
   width: 100%;
   height: auto;
 `
 export const MainPageResultWrap = styled.div`
-  margin-top: 50px;
+  margin-top: 150px;
   width: 50%;
   height: auto;
   margin-left: auto;
@@ -20,16 +30,20 @@ export const MainPageResultWrap = styled.div`
 
   //border: 1px solid black;
   border-radius: 10px;
+
+  animation: ${boxFade} 2s linear;
 `
 
-const boxFade = keyframes`
-  0% {
-    opacity: 0;
-  }
-  
-  100% {
-    opacity: 1;
-  }
+export const MaingPageResultTitle = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 160px;
+  font-family: 'Pretendard-Bold';
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+
+  animation: ${boxFade} 1s linear;
 `
 
 export const MainPageResultPlayImg = styled.div`

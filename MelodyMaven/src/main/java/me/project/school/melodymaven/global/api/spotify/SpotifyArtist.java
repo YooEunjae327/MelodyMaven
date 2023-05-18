@@ -24,7 +24,7 @@ public class SpotifyArtist {
                 .build();
 
         final SearchArtistsRequest searchArtistsRequest = spotifyApi.searchArtists(q)
-                .limit(30)
+                .limit(12)
                 .offset(0)
                 .build();
 
