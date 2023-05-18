@@ -42,6 +42,7 @@ const Main = () => {
             .then((Response) => {
                 console.log(Response)
                 setUrlData(true)
+                return Response.data
             })
             .catch((Error) => {
               console.log(Error)
@@ -93,7 +94,7 @@ const Main = () => {
             </>
           ) : (
             <>
-              <MainResultArtist />
+              <MainResultArtist info={urlValue} />
               {/* <MainResult info={urlData} /> */}
             </>
           )}
