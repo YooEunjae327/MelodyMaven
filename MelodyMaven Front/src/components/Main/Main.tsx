@@ -27,7 +27,7 @@ const Main = () => {
   const secondSay =
     ' This website recommends similar songs when you type songs! '
 
-  const urlValue = (event: any) => {
+  const urlValue = (event : any) => {
     event.preventDefault()
     console.log(localStorage.getItem('token'))
     console.log(event.target.value.value)

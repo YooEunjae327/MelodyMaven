@@ -38,7 +38,7 @@ const MainResult = (musicInfo : any) => {
             </MainResultUrlContainer>
           </MainResultImgContainer>
         </MainResultImgWrap>
-
+{/* 
         {musicInfo.info.map((value: any, index: number) => {
           return (
             <MainResultImgWrap>
@@ -61,7 +61,7 @@ const MainResult = (musicInfo : any) => {
               </MainResultImgContainer>
             </MainResultImgWrap>
           )
-        })}
+        })} */}
 
         <MainResultBottomLineWrap>
           <MainResultBottomLineButton onClick={MoveToTop}>
