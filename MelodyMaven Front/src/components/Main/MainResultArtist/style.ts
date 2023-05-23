@@ -17,14 +17,14 @@ export const MainPageResultArtistContainer = styled.div`
 `
 export const MainPageResultWrap = styled.div`
   margin-top: 150px;
-  width: 50%;
+  width: 900px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   gap: 30px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap;
   padding-bottom: 50px;
 
@@ -39,7 +39,7 @@ export const MaingPageResultTitle = styled.div`
   margin-right: auto;
   padding-top: 160px;
   font-family: 'Pretendard-Bold';
-  font-size: 80px;
+  font-size: 60px;
   display: flex;
   justify-content: center;
 

@@ -23,9 +23,6 @@ const MainResultArtist = (artist: any) => {
 
 
   const MainResultChange = (i: any) => {
-    console.log(i)
-    console.log(artist.info[i])
-    console.log(typeof artist)
     setChooseArtist(artist.info[i])
   }
 

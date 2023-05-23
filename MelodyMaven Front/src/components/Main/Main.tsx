@@ -19,7 +19,7 @@ const Main = () => {
   // Movement font function
   const [number, setNumber] = useState(0)
   const [introduce, setIntroduce] = useState('')
-  const [fiSe, setFiSe] = useState(true)
+  const [fiSe, setFiSe] = useState(false)
   const [urlData, setUrlData] = useState(false) // 등록 했을때
   const [artist, setAritst] = useState([]) // 등록하고 아티스트 정보
   const firstSay =
