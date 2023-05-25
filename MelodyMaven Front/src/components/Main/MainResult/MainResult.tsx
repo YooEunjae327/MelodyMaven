@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { MainExplainContainer } from '../MainExplain/style'
 import {
+  MainResultArtistAlbumInfo,
+  MainResultArtistAlbumInfoContainer,
+  MainResultArtistAlbumInfoImg,
+  MainResultArtistAlbumInfoWrap,
+  MainResultArtistAlbumTitle,
+  MainResultArtistAlbumWrap,
   MainResultBestMusicImg,
   MainResultBestMusicInfo,
   MainResultBestMusicInfoTitle,
@@ -29,6 +35,7 @@ import {
   MainResultYoutubeWhite,
   MainResultYoutubeWrap,
 } from './style'
+import { MainResultArtistInfo,  } from '../MainResultArtist/style'
 
 const MainResult = (artist: any) => {
   const [changeSpotify, setChangeSpotify] = useState(false) // Spotify logo 변경
@@ -58,49 +65,39 @@ const MainResult = (artist: any) => {
                 {artist.info.genres[0]}
               </MainResultImgInfoDetail>
             </MainResultImgInfoWrap>
-            {/* <MainResultSpotifyWrap
-              onMouseOver={changeSpotifyLogo}
-              onMouseLeave={changeSpotifyLogoLe}
-            >
-              {changeSpotify === false ? (
-                <MainResultSpotifyBlack />
-              ) : (
-                <MainResultSpotifyWhite />
-              )}
-              Spotify
-            </MainResultSpotifyWrap> */}
-            {/* <MainResultBestMusicWarp>
-              <MainResultBestMusicImg src="https://i.scdn.co/image/ab67616d00001e02ee07023115f822012390d2a0" />
-              <MainResultBestMusicInfoWrap>
-                  <MainResultBestMusicInfoTitle>Main album</MainResultBestMusicInfoTitle>
-                <MainResultBestMusicInfoTitle>Fever Dreams</MainResultBestMusicInfoTitle>
-              </MainResultBestMusicInfoWrap>
-            </MainResultBestMusicWarp>
-             */}
+            <MainResultLine />
+            <MainResultArtistInfo>
+              Jamie Berry mainly makes genre songs for electroswing. His best
+              album is 'tomato'. It also has 60,000 followers and has 47 out of
+              100 popularity points. There are artists similar to this below, so
+              please refer to it and listen to it together if you like it. :)
+            </MainResultArtistInfo>
           </MainResultUrlContainer>
         </MainResultImgContainer>
       </MainResultImgWrap>
-      {/* <MainResultImgWrap>
-              <MainResultInfo>
-                <MainResultInfoDetailTitle>Reccomend</MainResultInfoDetailTitle>
-                <MainResultInfoDetailTitle>Music</MainResultInfoDetailTitle>
-                <MainResultInfoDetailTitle>#testing</MainResultInfoDetailTitle>
-              </MainResultInfo>
-              <MainResultLine></MainResultLine>
 
-              <MainResultImgContainer>
-                <MainResultImg src="https://img.youtube.com/vi/5NV6Rdv1a3I/maxresdefault.jpg" />
-                <MainResultImgInfo>asd</MainResultImgInfo>
-                <MainResultImgInfoDetail>asd</MainResultImgInfoDetail>
+      <MainResultArtistAlbumWrap>
+        <MainResultArtistAlbumTitle>Album</MainResultArtistAlbumTitle>
+        <MainResultArtistAlbumInfoContainer>
+          
+          <MainResultArtistAlbumInfoWrap>
+            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab676161000051746a80abb55f089d80528d24fc" />
+            <MainResultArtistAlbumInfo>
+              UNDERGROUND ROCKSTAR
+            </MainResultArtistAlbumInfo>
+          </MainResultArtistAlbumInfoWrap>
 
-                <MainResultUrlContainer>
-                  <MainResultYoutubeWrap>YouTube</MainResultYoutubeWrap>
-                  <MainResultSpotifyWrap>Spotify</MainResultSpotifyWrap>
-                </MainResultUrlContainer>
-              </MainResultImgContainer>
-            </MainResultImgWrap> */}
+          <MainResultArtistAlbumInfoWrap>
+            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab676161000051746a80abb55f089d80528d24fc" />
+            <MainResultArtistAlbumInfo>
+              UNDERGROUND ROCKSTAR
+            </MainResultArtistAlbumInfo>
+          </MainResultArtistAlbumInfoWrap>
+        </MainResultArtistAlbumInfoContainer>
+      </MainResultArtistAlbumWrap>
 
-      {/* <MainResultBottomLineWrap>
+      {/*    
+      <MainResultBottomLineWrap>
         <MainResultBottomLineButton onClick={MoveToTop}>
           If you want to go to the top, enjoy it here
         </MainResultBottomLineButton>

@@ -15,6 +15,7 @@ export const MainPageResultArtistContainer = styled.div`
   width: 100%;
   height: auto;
 `
+
 export const MainPageResultWrap = styled.div`
   margin-top: 150px;
   width: 900px;
@@ -106,7 +107,7 @@ export const MainPageResultArtist = styled.div`
   display: block;
   text-align: center;
   background-color: rgb(46, 46, 46);
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
 
   cursor: pointer;
@@ -162,4 +163,16 @@ export const MainPageResultArtistDetail = styled.div`
   border-bottom: 1px solid black;
 
   cursor: pointer;
+`
+
+export const MainResultArtistInfo = styled.p`
+  width: 420px;
+  height: auto;
+  align-items: start;
+  text-align: start;
+  margin-top: 70px;
+  font-size: 25px;
+  font-family: 'Pretendard-Thin';
+
+  color: gray;
 `

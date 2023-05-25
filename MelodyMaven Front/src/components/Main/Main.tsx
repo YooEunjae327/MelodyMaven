@@ -153,7 +153,13 @@ const Main = () => {
           </>
         )}
       </MainPageContainer>
-      <MainExplain />
+      {!urlData ? (
+        <>
+        <MainExplain />
+        </>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { BsSpotify, BsYoutube } from 'react-icons/bs'
 
 
+
 export const MainResultContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -14,8 +15,8 @@ export const MainResultContainer = styled.div`
   display: table;
   justify-content: center;
   text-align: center;
-`
 
+`
 
 export const MainResultInfo = styled.div`
   display: table;
@@ -41,34 +42,31 @@ export const MainResultInfoDetail = styled.div`
 
 export const MainResultImgWrap = styled.div`
   display: flex;
-  margin-left: 300px;
-  border-radius: 10px;
-  
-  margin-top: 50px;
-  width: 67%;
-  height: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  width: 70%;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`
+
+` 
 
 export const MainResultLine = styled.div`
-  height: 600px;
-  margin-right: 100px;
-  border-left: 1px solid black;
+  height: 50px;
+  width: 50px;
+  border-bottom: 1px solid gray;
 `
 export const MainResultImgContainer = styled.div`
   display: flex;
   margin-right: auto;
-  
+
 `
 
 export const MainResultUrlContainer = styled.div`
-  margin-left: 50px;
-  margin-top: 80px;
+  margin-top: 30px;
+  margin-left: 100px;
   display: block;
   height: 30px;
   width: 600px;
-  align-items: center;
   font-family: 'Pretendard-Thin';
 `
 
@@ -108,7 +106,7 @@ export const MainResultSpotifyWrap = styled.div`
   background-color: beige;
   color: black;
 
-    :hover {
+  :hover {
     background-color: black;
     border: none;
     color: beige;
@@ -116,22 +114,67 @@ export const MainResultSpotifyWrap = styled.div`
 `
 
 export const MainResultImgInfo = styled.p`
-  //display: flex;
-  //justify-content: center;
   font-size: 100px;
   font-family: 'Pretendard-Bold';
+
+  color: rgb(49, 51, 56);
 `
 export const MainResultImgInfoDetail = styled.p`
-  margin-left: 20px;
   text-align: left;
   font-size: 40px;
   font-family: 'Pretendard-Thin';
+
+  color: gray
 `
+
+export const MainResultArtistAlbumWrap = styled.div`
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 700px;
+  font-size: 20px;
+
+  background-color: black;
+`
+
+export const MainResultArtistAlbumTitle = styled.p`
+  padding-top: 20px;
+  font-size: 80px;
+  color: beige;
+`
+
+export const MainResultArtistAlbumInfoContainer = styled.div`
+  margin-top: 50px ;
+  display: flex;
+  justify-content: space-around;
+`
+
+export const MainResultArtistAlbumInfoWrap = styled.div`
+  display: block;
+`
+
+export const MainResultArtistAlbumInfoImg = styled.img`
+  width: 320px;
+  height: 320px;
+`
+export const MainResultArtistAlbumInfo = styled.p`  
+  margin-top: 10px;
+  color: beige;
+  font-size: 30px;
+`
+
 
 export const MainResultImg = styled.img`
   width: 580px;
   height: 580px;
-  margin-bottom: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.010);
+  }
 `
 
 export const MainResultRecommendSongs = styled.div`
@@ -188,7 +231,6 @@ export const MainResultSpotifyWhite = styled(BsSpotify)`
   color: beige;
 `
 
-
 export const MainResultSpotifyBlack = styled(BsSpotify)`
   width: 25px;
   height: 25px;
@@ -199,14 +241,18 @@ export const MainResultSpotifyBlack = styled(BsSpotify)`
 export const MainResultBestMusicWarp = styled.div`
   display: flex;
   justify-content: left;
-  margin-top: 40px;
+  margin-top: 130px;
   width: 600px;
   height: 200px;
+
+  position: absolute;
 `
 export const MainResultBestMusicImg = styled.img`
   border-radius: 10px;
   width: 250px;
   height: 250px;
+  margin-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `
 export const MainResultBestMusicInfoWrap = styled.div`
   display: flex;
@@ -218,6 +264,5 @@ export const MainResultBestMusicInfoTitle = styled.p`
   font-size: 30px;
   font-family: 'Pretendard-Bold';
 `
-export const MainResultBestMusicInfo = styled.p`
+export const MainResultBestMusicInfo = styled.p``
 
-`
