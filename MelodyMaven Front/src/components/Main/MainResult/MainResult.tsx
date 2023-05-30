@@ -4,49 +4,42 @@ import {
   MainResultArtistAlbumInfo,
   MainResultArtistAlbumInfoContainer,
   MainResultArtistAlbumInfoImg,
+  MainResultArtistAlbumInfoName,
   MainResultArtistAlbumInfoWrap,
   MainResultArtistAlbumTitle,
   MainResultArtistAlbumWrap,
-  MainResultBestMusicImg,
-  MainResultBestMusicInfo,
-  MainResultBestMusicInfoTitle,
-  MainResultBestMusicInfoWrap,
-  MainResultBestMusicWarp,
-  MainResultBottomLine,
-  MainResultBottomLineButton,
-  MainResultBottomLineWrap,
+  MainResultButtonWrap,
   MainResultContainer,
+  MainResultGenres,
+  MainResultGenresContainer,
+  MainResultGenresImg,
   MainResultImg,
   MainResultImgContainer,
   MainResultImgInfo,
   MainResultImgInfoDetail,
   MainResultImgInfoWrap,
+  MainResultImgSideContainer,
   MainResultImgWrap,
-  MainResultInfo,
-  MainResultInfoDetail,
-  MainResultInfoDetailTitle,
+  MainResultLeftButton,
   MainResultLine,
-  MainResultRecommendSongs,
-  MainResultSpotifyBlack,
-  MainResultSpotifyWhite,
-  MainResultSpotifyWrap,
+  MainResultPlayBar,
+  MainResultPlayBarFull,
+  MainResultPlayBarInWrap,
+  MainResultPlayBarTime,
+  MainResultPlayBarWrap,
+  MainResultPlayButton,
+  MainResultRightButton,
+  MainResultTracksContainer,
+  MainResultTracksList,
+  MainResultTracksTitle,
   MainResultUrlContainer,
-  MainResultYoutubeBlack,
-  MainResultYoutubeWhite,
-  MainResultYoutubeWrap,
 } from './style'
 import { MainResultArtistInfo,  } from '../MainResultArtist/style'
+import axios from 'axios'
 
-const MainResult = (artist: any) => {
+const MainResult = (info: any) => {
   const [changeSpotify, setChangeSpotify] = useState(false) // Spotify logo 변경
 
-  const changeSpotifyLogo = () => {
-    setChangeSpotify(true)
-  }
-
-  const changeSpotifyLogoLe = () => {
-    setChangeSpotify(false)
-  }
 
   const MoveToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -54,15 +47,39 @@ const MainResult = (artist: any) => {
 
   return (
     <MainResultContainer>
-      <MainResultImgWrap>
+      <MainResultGenresContainer>
+        <MainResultGenresImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b"></MainResultGenresImg>
+        <MainResultGenres>ELECTRO SWING</MainResultGenres>
+
+        <MainResultButtonWrap>
+          <MainResultLeftButton />
+          <MainResultPlayButton />
+          <MainResultRightButton />
+        </MainResultButtonWrap>
+
+        <MainResultPlayBarWrap>
+          <MainResultPlayBarTime>0:00</MainResultPlayBarTime>
+          <MainResultPlayBarInWrap>
+            <MainResultPlayBar></MainResultPlayBar>
+            <MainResultPlayBarFull></MainResultPlayBarFull>
+          </MainResultPlayBarInWrap>
+          <MainResultPlayBarTime>2:10</MainResultPlayBarTime>
+        </MainResultPlayBarWrap>
+      </MainResultGenresContainer>
+
+      <MainResultTracksContainer>
+        <MainResultTracksTitle>Popularity</MainResultTracksTitle>
+        <MainResultTracksList></MainResultTracksList>
+      </MainResultTracksContainer>
+      {/* <MainResultImgWrap>
         <MainResultImgContainer>
-          <MainResultImg src={artist.info.images[0].url} />
+          <MainResultImg src={info.artist.images[0].url} />
 
           <MainResultUrlContainer>
             <MainResultImgInfoWrap>
-              <MainResultImgInfo>{artist.info.name}</MainResultImgInfo>
+              <MainResultImgInfo>{info.artist.name}</MainResultImgInfo>
               <MainResultImgInfoDetail>
-                {artist.info.genres[0]}
+                {info.artist.genres[0]}
               </MainResultImgInfoDetail>
             </MainResultImgInfoWrap>
             <MainResultLine />
@@ -79,22 +96,33 @@ const MainResult = (artist: any) => {
       <MainResultArtistAlbumWrap>
         <MainResultArtistAlbumTitle>Album</MainResultArtistAlbumTitle>
         <MainResultArtistAlbumInfoContainer>
-          
           <MainResultArtistAlbumInfoWrap>
-            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab676161000051746a80abb55f089d80528d24fc" />
-            <MainResultArtistAlbumInfo>
-              UNDERGROUND ROCKSTAR
-            </MainResultArtistAlbumInfo>
+            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab67616d0000b273be57345b0d4552352d4d0f90" />
+            <MainResultArtistAlbumInfo>M O T O W N</MainResultArtistAlbumInfo>
+            <MainResultArtistAlbumInfoName>
+              2019 · Album
+            </MainResultArtistAlbumInfoName>
           </MainResultArtistAlbumInfoWrap>
 
           <MainResultArtistAlbumInfoWrap>
-            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab676161000051746a80abb55f089d80528d24fc" />
+            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab67616d0000b273e0891e322bc2773b1e4389c2" />
+            <MainResultArtistAlbumInfo>Boyhood</MainResultArtistAlbumInfo>
+            <MainResultArtistAlbumInfoName>
+              2023 · Album
+            </MainResultArtistAlbumInfoName>
+          </MainResultArtistAlbumInfoWrap>
+
+          <MainResultArtistAlbumInfoWrap>
+            <MainResultArtistAlbumInfoImg src="https://i.scdn.co/image/ab67616d0000b2735792dec78b32f1c3efe2abe7" />
             <MainResultArtistAlbumInfo>
               UNDERGROUND ROCKSTAR
             </MainResultArtistAlbumInfo>
+            <MainResultArtistAlbumInfoName>
+              2020 · Album
+            </MainResultArtistAlbumInfoName>
           </MainResultArtistAlbumInfoWrap>
         </MainResultArtistAlbumInfoContainer>
-      </MainResultArtistAlbumWrap>
+      </MainResultArtistAlbumWrap> */}
 
       {/*    
       <MainResultBottomLineWrap>

@@ -16,13 +16,30 @@ import {
 } from './style'
 import styled from 'styled-components'
 import MainResult from '../MainResult/MainResult'
+import axios from 'axios'
 
 const MainResultArtist = (artist: any) => {
   const [detalInfo, setDetailInfo] = useState(false) // 디테일 useState
   const [chooseArtist, setChooseArtist] = useState([])
+  const [relatedArtists, setRelatedArtists] = useState([])
 
-
-  const MainResultChange = (i: any) => {
+  const MainResultChange = async (i: any) => {
+    console.log(artist.info[i].id)
+    await axios
+      .get(
+        `http://localhost:4000/recommend/spotify/related?artist=${
+          artist.info[i].id
+        }&token=${localStorage.getItem('token')}`
+      )
+      .then((Response) => {
+        console.log(Response.data
+          )
+        setRelatedArtists(Response.data)
+      })
+      .catch((Error) => {
+        console.error(Error)
+      })
+      
     setChooseArtist(artist.info[i])
   }
 
@@ -137,10 +154,10 @@ const MainResultArtist = (artist: any) => {
               )}
             </div>
           </MainPageResultArtistContainer>
-        </>
+        </> 
       ) : (
         <>
-          <MainResult info={chooseArtist} />
+          <MainResult artist={chooseArtist} related={relatedArtists} />
         </>
       )}
     </>

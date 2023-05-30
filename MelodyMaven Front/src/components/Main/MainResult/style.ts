@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { BsSpotify, BsYoutube } from 'react-icons/bs'
-
-
+import { AiFillPlayCircle } from 'react-icons/ai'
+import { IoPlaySkipBack } from 'react-icons/io5'
 
 export const MainResultContainer = styled.div`
   margin-left: auto;
@@ -12,11 +12,114 @@ export const MainResultContainer = styled.div`
   background-color: beige;
   align-items: center;
   box-sizing: border-box;
-  display: table;
-  justify-content: center;
+  display: flex;
   text-align: center;
-
 `
+
+export const MainResultGenresContainer = styled.div`
+  width: 50%;
+  height: auto;
+`
+export const MainResultTracksContainer = styled.div`
+  width: 50%;
+  height: 780px;
+  margin-right: 60px;
+  background-color: #2f4858;
+  margin-bottom: 80px;
+  border-radius: 20px;
+  display: block;
+`
+
+export const MainResultTracksTitle = styled.div`
+  padding: 30px 0px 0px 30px;
+  text-align: left;
+  color: white;
+  font-size: 30px;
+  font-family: 'Pretendard-Bold';
+`
+
+export const MainResultTracksList = styled.div`
+`
+
+export const MainResultGenresImg = styled.img`
+  width: 540px;
+  margin-top: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+`
+
+export const MainResultGenres = styled.p`
+  margin-top: 10px;
+  font-size: 90px;
+  font-family: 'Pretendard-Bold';
+`
+
+export const MainResultButtonWrap = styled.div` 
+  margin-top: 30px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  //background-color: black;
+`
+
+export const MainResultPlayButton = styled(AiFillPlayCircle)`
+  width: 60px;
+  height: 60px;
+`
+export const MainResultLeftButton = styled(IoPlaySkipBack)`
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  margin-right: 25px;
+`
+export const MainResultRightButton = styled(IoPlaySkipBack)`
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  margin-left: 25px;
+
+  transform: scale(-1);
+`
+
+export const MainResultPlayBarWrap = styled.div`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+`
+
+export const MainResultPlayBarTime = styled.div`
+  font-size: 14px;
+  font-family: 'Pretendard-SemBold';
+`
+
+export const MainResultPlayBarInWrap = styled.div`
+  display: flex;
+  height: 7px;
+`
+
+export const MainResultPlayBar = styled.div`
+  position: absolute;
+  margin-top: 4px;
+  margin-left: 11px;
+  margin-right: 11px;
+  width: 300px;
+  height: 7px;
+  border-radius: 50px;
+  background-color: rgba(80, 80, 80);
+`
+export const MainResultPlayBarFull = styled.div`
+  //position: absolute;
+  margin-top: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 400px;
+  height: 7px;
+  border-radius: 50px;
+  background-color: #bfd2bb;
+`
+
 
 export const MainResultInfo = styled.div`
   display: table;
@@ -47,8 +150,7 @@ export const MainResultImgWrap = styled.div`
   margin-top: 70px;
   width: 70%;
   justify-content: center;
-
-` 
+`
 
 export const MainResultLine = styled.div`
   height: 50px;
@@ -58,7 +160,12 @@ export const MainResultLine = styled.div`
 export const MainResultImgContainer = styled.div`
   display: flex;
   margin-right: auto;
+`
 
+export const MainResultImgSideContainer = styled.div`
+  margin-top: 120px;
+  display: flex;
+  margin-right: auto;
 `
 
 export const MainResultUrlContainer = styled.div`
@@ -124,7 +231,7 @@ export const MainResultImgInfoDetail = styled.p`
   font-size: 40px;
   font-family: 'Pretendard-Thin';
 
-  color: gray
+  color: gray;
 `
 
 export const MainResultArtistAlbumWrap = styled.div`
@@ -132,38 +239,63 @@ export const MainResultArtistAlbumWrap = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  height: 700px;
+  height: 750px;
   font-size: 20px;
 
-  background-color: black;
+  background-color: rgba(18, 18, 18);
 `
 
 export const MainResultArtistAlbumTitle = styled.p`
   padding-top: 20px;
   font-size: 80px;
   color: beige;
+
+  font-family: 'Pretendard-Bold';
 `
 
 export const MainResultArtistAlbumInfoContainer = styled.div`
-  margin-top: 50px ;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin-top: 30px;
 `
 
 export const MainResultArtistAlbumInfoWrap = styled.div`
+  width: 500px;
+  height: 570px;
   display: block;
+  margin-left: 40px;
+  margin-right: 40px;
+  text-align: center;
+  border-radius: 20px;
+
+  //background-color: rgb(35, 35, 35);
 `
 
 export const MainResultArtistAlbumInfoImg = styled.img`
-  width: 320px;
-  height: 320px;
+  width: 440px;
+  height: 440px;
+
+  border: 1px solid beige;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.83) 0px 3px 8px;
 `
-export const MainResultArtistAlbumInfo = styled.p`  
-  margin-top: 10px;
-  color: beige;
-  font-size: 30px;
+export const MainResultArtistAlbumInfo = styled.p`
+  margin-top: 20px;
+  font-size: 25px;
+  font-family: 'Pretendard-Bold';
+  color: white;
+  text-align: start;
+  margin-left: 50px;
 `
 
+export const MainResultArtistAlbumInfoName = styled.p`
+  margin-top: 15px;
+  font-size: 14px;
+  font-family: 'Pretendard-Bold';
+  color: rgb(137, 137, 137);
+  text-align: start;
+  margin-left: 50px;
+`
 
 export const MainResultImg = styled.img`
   width: 580px;
@@ -173,7 +305,7 @@ export const MainResultImg = styled.img`
   cursor: pointer;
 
   :hover {
-    transform: scale(1.010);
+    transform: scale(1.01);
   }
 `
 
@@ -265,4 +397,3 @@ export const MainResultBestMusicInfoTitle = styled.p`
   font-family: 'Pretendard-Bold';
 `
 export const MainResultBestMusicInfo = styled.p``
-

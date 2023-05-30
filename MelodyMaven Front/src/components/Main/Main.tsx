@@ -29,8 +29,6 @@ const Main = () => {
 
   const urlValue = (event : any) => {
     event.preventDefault()
-    console.log(localStorage.getItem('token'))
-    console.log(event.target.value.value)
     if (!localStorage.getItem('token')) {
       axios
         .get(`http://localhost:4000/recommend/spotify/token`)

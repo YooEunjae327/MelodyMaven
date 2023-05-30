@@ -1,6 +1,6 @@
 import { SigninPageButton, SigninPageContainer, SigninPageExplain, SigninPageInput, SigninPageMovementLogin, SigninPageSideWrap, SigninPageTestingSpan, SigninPageTitle } from "./style"
 
-const Signin = () => {
+const SignUp = () => {
 
     return (
       <SigninPageContainer>
@@ -28,4 +28,4 @@ const Signin = () => {
     )
 }
 
-export default Signin
+export default SignUp
