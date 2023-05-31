@@ -30,19 +30,42 @@ import {
   MainResultPlayButton,
   MainResultRightButton,
   MainResultTracksContainer,
+  MainResultTracksExplain,
+  MainResultTracksImg,
   MainResultTracksList,
+  MainResultTracksMusicWrap,
+  MainResultTracksNumber,
   MainResultTracksTitle,
+  MainResultTracksTitleMusic,
+  MainResultTracksWrap,
   MainResultUrlContainer,
 } from './style'
-import { MainResultArtistInfo,  } from '../MainResultArtist/style'
+import { MainResultArtistInfo } from '../MainResultArtist/style'
 import axios from 'axios'
 
 const MainResult = (info: any) => {
   const [changeSpotify, setChangeSpotify] = useState(false) // Spotify logo 변경
-
+  const [targetNumber, setTargetNumber] = useState(0)
 
   const MoveToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+  
+  const BackMove = () => {
+    setTargetNumber(targetNumber -  10)
+
+    if (targetNumber < 10) {
+      setTargetNumber(200) 
+    }
+
+  }
+
+  const FrontMove = () => {
+    setTargetNumber(targetNumber + 10)
+
+    if (targetNumber > 190) {
+      setTargetNumber(0)
+    }
   }
 
   return (
@@ -52,25 +75,54 @@ const MainResult = (info: any) => {
         <MainResultGenres>ELECTRO SWING</MainResultGenres>
 
         <MainResultButtonWrap>
-          <MainResultLeftButton />
+          <MainResultLeftButton onClick={BackMove} />
           <MainResultPlayButton />
-          <MainResultRightButton />
+          <MainResultRightButton onClick={FrontMove} />
         </MainResultButtonWrap>
 
         <MainResultPlayBarWrap>
-          <MainResultPlayBarTime>0:00</MainResultPlayBarTime>
+          <MainResultPlayBarTime>
+            {targetNumber >= 60 ? Math.floor(targetNumber / 60) : 0}:
+            {targetNumber % 60 === 0 ? '00' : targetNumber % 60}
+          </MainResultPlayBarTime>
           <MainResultPlayBarInWrap>
-            <MainResultPlayBar></MainResultPlayBar>
+            <MainResultPlayBar count={targetNumber * 2}></MainResultPlayBar>
             <MainResultPlayBarFull></MainResultPlayBarFull>
           </MainResultPlayBarInWrap>
-          <MainResultPlayBarTime>2:10</MainResultPlayBarTime>
+          <MainResultPlayBarTime>3:20</MainResultPlayBarTime>
         </MainResultPlayBarWrap>
       </MainResultGenresContainer>
 
       <MainResultTracksContainer>
         <MainResultTracksTitle>Popularity</MainResultTracksTitle>
-        <MainResultTracksList></MainResultTracksList>
+        <MainResultTracksExplain>
+          Even if I click it or turn it on, the song doesn't come out. It's
+          going to the Spotify link.
+        </MainResultTracksExplain>
+
+        <MainResultTracksMusicWrap>
+          <MainResultTracksWrap>
+            <MainResultTracksImg src="https://i.scdn.co/image/ab676161000051746d4df884dc6c3cd35e2bef18" />
+            <MainResultTracksTitleMusic>Toxic</MainResultTracksTitleMusic>
+          </MainResultTracksWrap>
+
+          <MainResultTracksWrap>
+            <MainResultTracksImg src="https://i.scdn.co/image/ab67616100005174a37cb4fec26f168a015b24d9" />
+            <MainResultTracksTitleMusic>ToamtoLover</MainResultTracksTitleMusic>
+          </MainResultTracksWrap>
+
+          <MainResultTracksWrap>
+            <MainResultTracksImg src="https://i.scdn.co/image/ab67616d00001e028e3a164e8131a58a31c5535c" />
+            <MainResultTracksTitleMusic>Testing</MainResultTracksTitleMusic>
+          </MainResultTracksWrap>
+
+          <MainResultTracksWrap>
+            <MainResultTracksImg src="https://i.scdn.co/image/ab67616100005174250d3acf8d859b8a9914ae65" />
+            <MainResultTracksTitleMusic>ToamtoLover</MainResultTracksTitleMusic>
+          </MainResultTracksWrap>
+        </MainResultTracksMusicWrap>
       </MainResultTracksContainer>
+
       {/* <MainResultImgWrap>
         <MainResultImgContainer>
           <MainResultImg src={info.artist.images[0].url} />
@@ -122,7 +174,7 @@ const MainResult = (info: any) => {
             </MainResultArtistAlbumInfoName>
           </MainResultArtistAlbumInfoWrap>
         </MainResultArtistAlbumInfoContainer>
-      </MainResultArtistAlbumWrap> */}
+      </MainResultArtistAlbumWrap> 
 
       {/*    
       <MainResultBottomLineWrap>

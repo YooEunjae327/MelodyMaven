@@ -10,8 +10,6 @@ export const MainResultContainer = styled.div`
   width: 100%;
   min-height: 1000px;
   background-color: beige;
-  align-items: center;
-  box-sizing: border-box;
   display: flex;
   text-align: center;
 `
@@ -21,31 +19,99 @@ export const MainResultGenresContainer = styled.div`
   height: auto;
 `
 export const MainResultTracksContainer = styled.div`
-  width: 50%;
-  height: 780px;
-  margin-right: 60px;
-  background-color: #2f4858;
-  margin-bottom: 80px;
-  border-radius: 20px;
+  width: 800px;
+  height: 840px;
   display: block;
+
+  border-radius: 20px;
+  background-color: #bfd2bb;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 `
 
 export const MainResultTracksTitle = styled.div`
-  padding: 30px 0px 0px 30px;
-  text-align: left;
-  color: white;
-  font-size: 30px;
+  margin-top: 15px;
+  color: black;
+  font-size: 90px;
   font-family: 'Pretendard-Bold';
 `
 
 export const MainResultTracksList = styled.div`
+  display: flex;
+  justify-content: start;
+ 
+  text-align: center;
+  align-items: center;
+  margin-left: 30px;
+  width: 92%;
+  height: 66px;
 `
+
+export const MainResultTracksNumber = styled.div`
+  font-size: 30px;
+  margin-right: 40px;
+  margin-left: 20px;
+  color: beige;
+`
+
+export const MainResultTracksTitleMusic = styled.p`
+  margin-top: 5px;
+  font-family: 'Pretendard-Bold';
+`
+
+export const MainResultTracksImg = styled.img`
+  width: 240px;
+  height: 240px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`
+
+export const MainResultTracksExplain = styled.p`
+  margin-top: 10px;
+  font-family: 'Pretendard-SemBold';
+`
+
+export const MainResultTracksMusicWrap = styled.div` 
+  margin-left: 100px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+
+`
+
+export const MainResultTracksWrap = styled.div`
+  padding: 20px;
+  display: block;
+  flex-wrap: wrap;
+  text-align: start;
+  background-color: white;
+  border-radius: 10px;
+  //background-color: rgb(40, 40, 40);
+   background-color: #bfd2bb;
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const MainResultGenresImg = styled.img`
   width: 540px;
   margin-top: 20px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+
+  :hover {
+    transform: scale(1.01);
+  }
 `
 
 export const MainResultGenres = styled.p`
@@ -66,18 +132,21 @@ export const MainResultButtonWrap = styled.div`
 export const MainResultPlayButton = styled(AiFillPlayCircle)`
   width: 60px;
   height: 60px;
+  cursor: pointer;
 `
 export const MainResultLeftButton = styled(IoPlaySkipBack)`
   margin-top: 10px;
   width: 40px;
   height: 40px;
   margin-right: 25px;
+  cursor: pointer;
 `
 export const MainResultRightButton = styled(IoPlaySkipBack)`
   margin-top: 10px;
   width: 40px;
   height: 40px;
   margin-left: 25px;
+  cursor: pointer;
 
   transform: scale(-1);
 `
@@ -92,6 +161,11 @@ export const MainResultPlayBarWrap = styled.div`
 export const MainResultPlayBarTime = styled.div`
   font-size: 14px;
   font-family: 'Pretendard-SemBold';
+
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 `
 
 export const MainResultPlayBarInWrap = styled.div`
@@ -99,15 +173,16 @@ export const MainResultPlayBarInWrap = styled.div`
   height: 7px;
 `
 
-export const MainResultPlayBar = styled.div`
+export const MainResultPlayBar = styled.div<{count : number}>`
   position: absolute;
   margin-top: 4px;
   margin-left: 11px;
   margin-right: 11px;
-  width: 300px;
+  width: ${({count}) => count }px;
   height: 7px;
   border-radius: 50px;
   background-color: rgba(80, 80, 80);
+
 `
 export const MainResultPlayBarFull = styled.div`
   //position: absolute;
