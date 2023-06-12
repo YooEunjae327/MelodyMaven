@@ -3,20 +3,26 @@ import { BsSpotify, BsYoutube } from 'react-icons/bs'
 import { AiFillPlayCircle } from 'react-icons/ai'
 import { IoPlaySkipBack } from 'react-icons/io5'
 
+
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 export const MainResultContainer = styled.div`
-  margin-left: auto;
-  margin-right: auto;
+ 
   padding-bottom: 40px;
   width: 100%;
   min-height: 1000px;
   background-color: beige;
   display: flex;
   text-align: center;
+
 `
 
 export const MainResultGenresContainer = styled.div`
   width: 50%;
   height: auto;
+  overflow: hidden;
 `
 export const MainResultTracksContainer = styled.div`
   width: 800px;
@@ -90,8 +96,16 @@ export const MainResultTracksWrap = styled.div`
    background-color: #bfd2bb;
 `
 
+export const MainResultBlankContainer = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
+  margin-left: 240px;
+`
 
-
+export const MainResultNoneBlankContainer = styled.div`
+  width: 100%;
+`
 
 
 
@@ -159,6 +173,7 @@ export const MainResultPlayBarWrap = styled.div`
 `
 
 export const MainResultPlayBarTime = styled.div`
+  width: 30px;
   font-size: 14px;
   font-family: 'Pretendard-SemBold';
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import NavBar from '../common/NavBar/NavBar'
 import {
   MainPageContainer,
@@ -14,6 +14,7 @@ import axios from 'axios'
 import MainResult from './MainResult/MainResult'
 import { Format } from './MainResult/MainResultFormat'
 import MainResultArtist from './MainResultArtist/MainResultArtist'
+import { tokenAccess, useFindArtists } from './MainAxios'
 
 const Main = () => {
   // Movement font function
@@ -27,74 +28,85 @@ const Main = () => {
   const secondSay =
     ' This website recommends similar songs when you type songs! '
 
-  const urlValue = (event : any) => {
-    event.preventDefault()
-    if (!localStorage.getItem('token')) {
-      axios
-        .get(`http://localhost:4000/recommend/spotify/token`)
-        .then((Response) => {
-          //setUrlData(Response.data.list[0].text.split('.'))
-          localStorage.setItem('token', Response.data.token)
 
-          axios
-            .get(
-              `http://localhost:4000/recommend/spotify?artist=${
-                event.target.value.value
-              }&token=${localStorage.getItem('token')}`
-            )
-            .then((Response) => {
-              console.log(Response.data.items)
-              setAritst(Response.data.items)
-              setUrlData(true)
-            })
-            .catch((Error) => {
-              console.log(Error)
-            })
-        })
-        .catch((Error) => {
-          console.log(Error)
-        })
-    } else {
-      axios
-        .get(
-          `http://localhost:4000/recommend/spotify?artist=${
-            event.target.value.value
-          }&token=${localStorage.getItem('token')}`
-        )
-        .then((Response) => {
-          console.log(Response.data.items)
-          setAritst(Response.data.items)
-          setUrlData(true)
-        })
-        .catch((Error) => {
-          console.log(Error)
-          axios
-            .get(`http://localhost:4000/recommend/spotify/token`)
-            .then((Response) => {
-              //setUrlData(Response.data.list[0].text.split('.'))
-              localStorage.setItem('token', Response.data.token)
-
-              axios
-                .get(
-                  `http://localhost:4000/recommend/spotify?artist=${
-                    event.target.value.value
-                  }&token=${localStorage.getItem('token')}`
-                )
-                .then((Response) => {
-                  console.log(Response.data.items)
-                  setAritst(Response.data.items)
-                  setUrlData(true)
-                })
-                .catch((Error) => {
-                  console.log(Error)
-                })
-            })
-            .catch((Error) => {
-              console.log(Error)
-            })
-        })
+  const urlValue = (e : any) => {
+    e.preventDefault()
+    
+    if(!localStorage.getItem('token')) {
+      tokenAccess()
     }
+    else { 
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useFindArtists(e)
+    }
+
+    // if (!localStorage.getItem('token')) {
+    //   axios
+    //     .get(`http://localhost:4000/recommend/spotify/token`)
+    //     .then((Response) => {
+    //       //setUrlData(Response.data.list[0].text.split('.'))
+    //       localStorage.setItem('token', Response.data.token)
+
+    //       axios
+    //         .get(
+    //           `http://localhost:4000/recommend/spotify?artist=${
+    //             event.target.value.value
+    //           }&token=${localStorage.getItem('token')}`
+    //         )
+    //         .then((Response) => {
+    //           console.log(Response.data.items)
+    //           setAritst(Response.data.items)
+    //           setUrlData(true)
+    //         })
+    //         .catch((Error) => {
+    //           console.log(Error)
+    //         })
+    //     })
+    //     .catch((Error) => {
+    //       console.log(Error)
+    //     })
+    // } else {
+    //   axios
+    //     .get(
+    //       `http://localhost:4000/recommend/spotify?artist=${
+    //         event.target.value.value
+    //       }&token=${localStorage.getItem('token')}`
+    //     )
+    //     .then((Response) => {
+    //       console.log(Response.data.items)
+    //       setAritst(Response.data.items)
+    //       setUrlData(true)
+    //     })
+    //     .catch((Error) => {
+    //       console.log(Error)
+    //       axios
+    //         .get(`http://localhost:4000/recommend/spotify/token`)
+    //         .then((Response) => {
+    //           //setUrlData(Response.data.list[0].text.split('.'))
+    //           localStorage.setItem('token', Response.data.token)
+
+    //           axios
+    //             .get(
+    //               `http://localhost:4000/recommend/spotify?artist=${
+    //                 event.target.value.value
+    //               }&token=${localStorage.getItem('token')}`
+    //             )
+    //             .then((Response) => {
+    //               console.log(Response.data.items)
+    //               setAritst(Response.data.items)
+    //               setUrlData(true)
+    //             })
+    //             .catch((Error) => {
+    //               console.log(Error)
+    //             })
+    //         })
+    //         .catch((Error) => {
+    //           console.log(Error)
+    //         })
+    //     })
+    // }
   }
+
 
   useEffect(() => {
     if (fiSe === true) {
@@ -151,6 +163,8 @@ const Main = () => {
           </>
         )}
       </MainPageContainer>
+
+
       {!urlData ? (
         <>
         <MainExplain />

@@ -9,9 +9,7 @@ const NavBar = () => {
         <NavBarSideContainer>
           {Home.map((value, index) => {
             return (
-              <NavBarTextWrap key={index}>
-                <NavBarAboutText to={value.path}  >{value.value}</NavBarAboutText>
-              </NavBarTextWrap>
+                <NavBarAboutText key={index} to={value.path}  >{value.value}</NavBarAboutText>
             )
           })}
         </NavBarSideContainer>

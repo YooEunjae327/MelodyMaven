@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MainExplainContainer } from '../MainExplain/style'
 import {
   MainResultArtistAlbumInfo,
@@ -8,6 +8,7 @@ import {
   MainResultArtistAlbumInfoWrap,
   MainResultArtistAlbumTitle,
   MainResultArtistAlbumWrap,
+  MainResultBlankContainer,
   MainResultButtonWrap,
   MainResultContainer,
   MainResultGenres,
@@ -22,6 +23,7 @@ import {
   MainResultImgWrap,
   MainResultLeftButton,
   MainResultLine,
+  MainResultNoneBlankContainer,
   MainResultPlayBar,
   MainResultPlayBarFull,
   MainResultPlayBarInWrap,
@@ -44,23 +46,41 @@ import { MainResultArtistInfo } from '../MainResultArtist/style'
 import axios from 'axios'
 
 const MainResult = (info: any) => {
-  const [changeSpotify, setChangeSpotify] = useState(false) // Spotify logo 변경
+  const [currentSlide, setCurrentSlide] = useState(0) // 캐러셀 구현 state
   const [targetNumber, setTargetNumber] = useState(0)
+  const slideRef = useRef<HTMLDivElement>(null)
+
+  const TOTAL_SLIDES = 3
+  const tesintg = ['a','2', '3','4']
+
 
   const MoveToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
-  
-  const BackMove = () => {
-    setTargetNumber(targetNumber -  10)
 
-    if (targetNumber < 10) {
-      setTargetNumber(200) 
+  const BackMove = () => {
+    if (currentSlide === 0) {
+      setCurrentSlide(TOTAL_SLIDES)
+    } else {
+      setCurrentSlide(currentSlide - 1)
     }
 
+    setTargetNumber(targetNumber - 10)
+
+    if (targetNumber < 10) {
+      setTargetNumber(200)
+    }
   }
 
   const FrontMove = () => {
+
+    if (currentSlide >= TOTAL_SLIDES) {
+      setCurrentSlide(0)
+    } else {
+      setCurrentSlide(currentSlide + 1)
+    }
+
+
     setTargetNumber(targetNumber + 10)
 
     if (targetNumber > 190) {
@@ -68,11 +88,26 @@ const MainResult = (info: any) => {
     }
   }
 
+    useEffect(() => {
+      if(slideRef.current !== null) {
+        slideRef.current.style.transition = 'all 0.5s ease-in-out'
+        slideRef.current.style.transform = `translateX(-${currentSlide}00%)`
+      }
+    }, [currentSlide])
+
+
   return (
     <MainResultContainer>
       <MainResultGenresContainer>
-        <MainResultGenresImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b"></MainResultGenresImg>
-        <MainResultGenres>ELECTRO SWING</MainResultGenres>
+
+        <MainResultBlankContainer ref={slideRef}>
+          {tesintg.map((value, index) => (
+            <MainResultNoneBlankContainer>
+              <MainResultGenresImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b"></MainResultGenresImg>
+              <MainResultGenres>ELECTRO SWING</MainResultGenres>
+            </MainResultNoneBlankContainer>
+          ))}
+        </MainResultBlankContainer>
 
         <MainResultButtonWrap>
           <MainResultLeftButton onClick={BackMove} />

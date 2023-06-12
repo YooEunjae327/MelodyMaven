@@ -2,36 +2,32 @@ import styled, { keyframes } from "styled-components"
 import { SlArrowDownCircle } from 'react-icons/sl'
 
 
+
+
 export const MainPageContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  min-height: calc(100vh - 12px) ;
+  min-height: 47vw ;
   background-color: beige;
   align-items: center;
   box-sizing: border-box;
 `
-export const MaingPageRecommendTitle = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 160px;
+export const MaingPageRecommendTitle = styled.p`
+    padding-top: 7vw;
     margin-bottom: 20px;
-    width: 68%;
+    width: 100%;
     font-family: "Pretendard-Bold";
-    font-size: 110px;
-    display: flex;
-    justify-content: center;
+    font-size: 6vw;
+    text-align: center;
+
+
 `
 
 export const MainPageRecommendForm = styled.form`
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  width: 68%;
+  height: 15vw;
   display: flex;
   justify-content: center;
-  font-size: 40px;
   font-family: 'Pretendard-Bold';
 `
 
@@ -51,7 +47,7 @@ export const MainPageSmallIntroduce = styled.div`
     width: 68%;
     height: 50px;
     font-family: "Pretendard-SemBold";
-    font-size: 25px;
+    font-size: 1.3vw;
     display: flex;
     justify-content: center;
 `
@@ -59,10 +55,11 @@ export const MainPageSmallIntroduce = styled.div`
 
 export const MainPageUrlInput = styled.input`
   padding-left: 25px;
-  font-size: 20px;
-  width: 400px;
-  height: 60px;
-  margin-top: 100px;
+  font-size: 1vw;
+  width: 20vw;
+  height: 3vw;
+  margin-top: auto;
+  margin-bottom: auto;
   background-color: beige;
   border: 1px solid gray;
   border-radius: 30px;
@@ -80,15 +77,16 @@ export const MainPageUrlInput = styled.input`
 `
 
 export const MainPageUrlButton = styled.button`
-  width: 150px;
-  height: 60px;
+  width: 7.5vw;
+  height: 3vw;
   margin-top: auto;
+  margin-bottom: auto;
   margin-left: 20px;
   background-color: black;
   color: white;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 1vw;
   justify-content: center;
   border: none;
   border-radius: 30px;
