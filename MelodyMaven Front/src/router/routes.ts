@@ -5,10 +5,10 @@ import SignUpPage from "../page/SignUpPage"
 
 
 const router = [
-    { path: '/', component: MainPage },
+    { path: '', component: MainPage },
     { path: '/login', component: LoginPage },
     { path: '/signup', component: SignUpPage },
-    { path: '/', component: MainResultArtistPage}
+    // { path: '/', component: MainResultArtistPage},
 ]
 
 export default router

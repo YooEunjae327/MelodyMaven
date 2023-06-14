@@ -9,7 +9,7 @@ const Router = () => {
                 return (
                   <Route
                     key={index}
-                    path={route.path}
+                     path={route.path}
                     element={<route.component />}
                   />
                 )

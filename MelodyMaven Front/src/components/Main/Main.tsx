@@ -1,8 +1,7 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import NavBar from '../common/NavBar/NavBar'
 import {
   MainPageContainer,
-  MainPageRecommendKrWrap,
   MainPageRecommendForm,
   MainPageSmallIntroduce,
   MainPageUrlButton,
@@ -10,11 +9,10 @@ import {
   MaingPageRecommendTitle,
 } from './style'
 import MainExplain from './MainExplain/MainExplain'
-import axios from 'axios'
-import MainResult from './MainResult/MainResult'
 import MainResultArtist from './MainResultArtist/MainResultArtist'
 import { tokenCreate, useFindArtists } from './hook/MainAxios'
 import useChangeSay from './hook/MainIntroduce'
+import { useLocation, useNavigate} from 'react-router-dom'
 
 const Main = () => {
   // Typing function
@@ -23,8 +21,21 @@ const Main = () => {
   // Find Artsits funtion
   const [checkArtist, setCheckArtist] = useState(false)
   const [value, error, fetchValue] = useFindArtists()
-  const [noneError, setNoneError] = useState(false)
+  const [query, setQuery] = useState("")
 
+
+  const history = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    console.log(query)
+  }, [query])
+
+  useEffect(() => {
+    console.log(location)
+    setQuery(new URLSearchParams(window.location.search).get('artist') ?? '')
+    // console.log(new URLSearchParams(window.location.search).get('aritst') )
+  }, [location])
 
   const findArtists = (e: any) => {
     e.preventDefault()
@@ -34,16 +45,15 @@ const Main = () => {
     } else {
       //@ts-expect-error
       fetchValue(e)
-      
     }
+
+    history(`?artist=${e.target.value.value}`)
   }
 
   useEffect(() => {
     //@ts-expect-error
-    console.log(value.length)
-    //@ts-expect-error
     if (value.length !== 0) {
-      setCheckArtist(true)
+      // setCheckArtist(true)
     }
   }, [value])
 
@@ -52,7 +62,7 @@ const Main = () => {
     <>
       <NavBar />
       <MainPageContainer>
-        {!checkArtist ? (
+        {!checkArtist? (
           <>
             <MaingPageRecommendTitle>MUSIC.MATCHMAKER</MaingPageRecommendTitle>
             <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>

@@ -20,12 +20,6 @@ import axios from 'axios'
 import { useParams, useSearchParams } from 'react-router-dom'
 
 const MainResultArtist = (artist: any) => {
-  const [searh] = useSearchParams()
-  const code = searh.get('artist')
-
-  useEffect(() => {
-    console.log(code)
-  }, [])
 
   const [detalInfo, setDetailInfo] = useState(false) // 디테일 useState
   const [chooseArtist, setChooseArtist] = useState([])
