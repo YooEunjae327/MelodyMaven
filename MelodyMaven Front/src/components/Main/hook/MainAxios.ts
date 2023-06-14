@@ -25,6 +25,7 @@ export const useFindArtists = () => {
         .catch((e) => {
           console.error(e)
           tokenCreate(true)
+          fetchValue(e)
         })
 
     },
@@ -36,7 +37,7 @@ export const useFindArtists = () => {
 
 
 export const tokenCreate = async (expire : boolean) => {
-  // if(expire) localStorage.clear()
+  if(expire) localStorage.clear()
 
   try {
     const Response = await axios.get(

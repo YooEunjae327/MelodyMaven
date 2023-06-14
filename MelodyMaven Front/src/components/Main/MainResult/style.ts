@@ -7,7 +7,6 @@ import { IoPlaySkipBack } from 'react-icons/io5'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
 export const MainResultContainer = styled.div`
  
   padding-bottom: 40px;
@@ -100,11 +99,12 @@ export const MainResultBlankContainer = styled.div`
   width: 100%;
   white-space: nowrap;
   display: flex;
-  margin-left: 240px;
+  margin-left: 130px;
 `
 
 export const MainResultNoneBlankContainer = styled.div`
   width: 100%;
+  margin-right: 140px;
 `
 
 

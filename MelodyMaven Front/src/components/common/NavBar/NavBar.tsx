@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { NavBarAboutText, NavBarContainer, NavBarSideContainer, NavBarTextWrap } from "./style"
 import Home from "./NavInfo"
 

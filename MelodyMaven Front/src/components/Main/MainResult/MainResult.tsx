@@ -54,10 +54,6 @@ const MainResult = (info: any) => {
   const tesintg = ['a','2', '3','4']
 
 
-  const MoveToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   const BackMove = () => {
     if (currentSlide === 0) {
       setCurrentSlide(TOTAL_SLIDES)
@@ -91,7 +87,7 @@ const MainResult = (info: any) => {
     useEffect(() => {
       if(slideRef.current !== null) {
         slideRef.current.style.transition = 'all 0.5s ease-in-out'
-        slideRef.current.style.transform = `translateX(-${currentSlide}00%)`
+        slideRef.current.style.transform = `translateX(-${currentSlide * 90}% )`
       }
     }, [currentSlide])
 

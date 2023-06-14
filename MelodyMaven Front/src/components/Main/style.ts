@@ -1,27 +1,22 @@
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes } from 'styled-components'
 import { SlArrowDownCircle } from 'react-icons/sl'
-
-
-
 
 export const MainPageContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  min-height: 47vw ;
+  height: 90vh;
   background-color: beige;
   align-items: center;
   box-sizing: border-box;
 `
 export const MaingPageRecommendTitle = styled.p`
-    padding-top: 7vw;
-    margin-bottom: 20px;
-    width: 100%;
-    font-family: "Pretendard-Bold";
-    font-size: 6vw;
-    text-align: center;
-
-
+  padding-top: 11vw;
+  margin-bottom: 20px;
+  width: 100%;
+  font-family: 'Pretendard-Bold';
+  font-size: 6vw;
+  text-align: center;
 `
 
 export const MainPageRecommendForm = styled.form`
@@ -40,18 +35,17 @@ export const MainPageRecommendKrWrap = styled.div`
 `
 
 export const MainPageSmallIntroduce = styled.div`
-    //margin-left: 308px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 40px;
-    width: 68%;
-    height: 50px;
-    font-family: "Pretendard-SemBold";
-    font-size: 1.3vw;
-    display: flex;
-    justify-content: center;
+  //margin-left: 308px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 40px;
+  width: 68%;
+  height: 50px;
+  font-family: 'Pretendard-SemBold';
+  font-size: 1.3vw;
+  display: flex;
+  justify-content: center;
 `
-
 
 export const MainPageUrlInput = styled.input`
   padding-left: 25px;
@@ -93,7 +87,7 @@ export const MainPageUrlButton = styled.button`
   font-family: 'Pretendard-Thin';
 
   word-spacing: 10px;
-  
+
   cursor: pointer;
 
   :hover {
@@ -102,4 +96,3 @@ export const MainPageUrlButton = styled.button`
     color: black;
   }
 `
-

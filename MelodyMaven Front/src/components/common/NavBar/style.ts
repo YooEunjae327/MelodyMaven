@@ -20,8 +20,6 @@ export const NavBarSideContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 `
 
 export const NavBarTextWrap = styled.div`
@@ -32,6 +30,7 @@ export const NavBarTextWrap = styled.div`
 export const NavBarAboutText = styled(Link)`
   text-decoration-line: none;
   color: black;
+  margin-top: 40px;
   margin-left: 2.7vw;
   margin-right: 2.7vw;
   cursor: pointer;

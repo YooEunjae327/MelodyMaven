@@ -12,7 +12,6 @@ import {
 import MainExplain from './MainExplain/MainExplain'
 import axios from 'axios'
 import MainResult from './MainResult/MainResult'
-import { Format } from './MainResult/MainResultFormat'
 import MainResultArtist from './MainResultArtist/MainResultArtist'
 import { tokenCreate, useFindArtists } from './hook/MainAxios'
 import useChangeSay from './hook/MainIntroduce'
