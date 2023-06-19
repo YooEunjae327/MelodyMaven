@@ -87,7 +87,7 @@ const MainResult = (info: any) => {
     useEffect(() => {
       if(slideRef.current !== null) {
         slideRef.current.style.transition = 'all 0.5s ease-in-out'
-        slideRef.current.style.transform = `translateX(-${currentSlide * 90}% )`
+        slideRef.current.style.transform = `translateX(-${currentSlide * 87}% )`
       }
     }, [currentSlide])
 

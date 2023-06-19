@@ -14,6 +14,7 @@ const boxFade = keyframes`
 export const MainPageResultArtistContainer = styled.div`
   width: 100%;
   height: auto;
+  background-color: beige;
 `
 
 export const MainPageResultWrap = styled.div`

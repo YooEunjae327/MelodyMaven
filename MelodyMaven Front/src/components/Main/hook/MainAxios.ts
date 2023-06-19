@@ -6,11 +6,11 @@ export const useFindArtists = () => {
   const [error, setError] = useState(false)
 
   const fetchValue = useCallback(
-    (e: any) => {
+    (query: String) => {
       axios
         .get(
           `http://localhost:4000/recommend/spotify?artist=${
-            e.target.value.value
+            query
           }&token=${localStorage.getItem('token')}`
         )
         .then((res) => {

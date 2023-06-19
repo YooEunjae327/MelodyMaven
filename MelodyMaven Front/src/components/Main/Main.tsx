@@ -12,7 +12,7 @@ import MainExplain from './MainExplain/MainExplain'
 import MainResultArtist from './MainResultArtist/MainResultArtist'
 import { tokenCreate, useFindArtists } from './hook/MainAxios'
 import useChangeSay from './hook/MainIntroduce'
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Main = () => {
   // Typing function
@@ -21,21 +21,10 @@ const Main = () => {
   // Find Artsits funtion
   const [checkArtist, setCheckArtist] = useState(false)
   const [value, error, fetchValue] = useFindArtists()
-  const [query, setQuery] = useState("")
-
+  const [query, setQuery] = useState('')
 
   const history = useNavigate()
   const location = useLocation()
-
-  useEffect(() => {
-    console.log(query)
-  }, [query])
-
-  useEffect(() => {
-    console.log(location)
-    setQuery(new URLSearchParams(window.location.search).get('artist') ?? '')
-    // console.log(new URLSearchParams(window.location.search).get('aritst') )
-  }, [location])
 
   const findArtists = (e: any) => {
     e.preventDefault()
@@ -43,20 +32,31 @@ const Main = () => {
     if (!localStorage.getItem('token')) {
       tokenCreate(false)
     } else {
-      //@ts-expect-error
-      fetchValue(e)
+      history(`?artist=${e.target.value.value}`)
     }
-
-    history(`?artist=${e.target.value.value}`)
   }
 
   useEffect(() => {
     //@ts-expect-error
     if (value.length !== 0) {
-      // setCheckArtist(true)
+      setCheckArtist(true)
     }
   }, [value])
 
+
+  useEffect(() => {
+    console.log(location)
+      // setQuery(new URLSearchParams(window.location.search).get('artist') ?? '')
+
+      if(new URLSearchParams(window.location.search).get('artist') !== null) {
+        //@ts-expect-error
+        fetchValue(new URLSearchParams(window.location.search).get('artist'))
+      } else {
+        setCheckArtist(false)
+      }
+
+    // console.log(new URLSearchParams(window.location.search).get('aritst') )
+  }, [location])
 
   return (
     <>
@@ -73,7 +73,13 @@ const Main = () => {
               ></MainPageUrlInput>
               <MainPageUrlButton type="submit">Submit</MainPageUrlButton>
             </MainPageRecommendForm>
-            {error ? (<><div>asd</div></>) : (<></>)}
+            {error ? (
+              <>
+                <div>asd</div>
+              </>
+            ) : (
+              <></>
+            )}
           </>
         ) : (
           <>

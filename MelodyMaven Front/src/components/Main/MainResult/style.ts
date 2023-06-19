@@ -24,8 +24,8 @@ export const MainResultGenresContainer = styled.div`
   overflow: hidden;
 `
 export const MainResultTracksContainer = styled.div`
-  width: 800px;
-  height: 840px;
+  width: 40vw;
+  height: 45vw;
   display: block;
 
   border-radius: 20px;
@@ -37,6 +37,7 @@ export const MainResultTracksTitle = styled.div`
   margin-top: 15px;
   color: black;
   font-size: 90px;
+  font-size: 4.8vw;
   font-family: 'Pretendard-Bold';
 `
 
@@ -64,14 +65,15 @@ export const MainResultTracksTitleMusic = styled.p`
 `
 
 export const MainResultTracksImg = styled.img`
-  width: 240px;
-  height: 240px;
+  width: 12vw;
+  height: 12vw;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `
 
 export const MainResultTracksExplain = styled.p`
   margin-top: 10px;
+  font-size: 0.85vw;
   font-family: 'Pretendard-SemBold';
 `
 
@@ -99,7 +101,8 @@ export const MainResultBlankContainer = styled.div`
   width: 100%;
   white-space: nowrap;
   display: flex;
-  margin-left: 130px;
+  margin-left: 135px;
+  //margin-left: 7.5vw;
 `
 
 export const MainResultNoneBlankContainer = styled.div`
@@ -114,11 +117,8 @@ export const MainResultNoneBlankContainer = styled.div`
 
 
 
-
-
-
 export const MainResultGenresImg = styled.img`
-  width: 540px;
+  width: 28vw;
   margin-top: 20px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
@@ -130,7 +130,7 @@ export const MainResultGenresImg = styled.img`
 
 export const MainResultGenres = styled.p`
   margin-top: 10px;
-  font-size: 90px;
+  font-size: 4.5vw;
   font-family: 'Pretendard-Bold';
 `
 
