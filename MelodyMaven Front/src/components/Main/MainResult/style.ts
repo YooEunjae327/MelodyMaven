@@ -18,10 +18,14 @@ export const MainResultContainer = styled.div`
 
 `
 
+
 export const MainResultGenresContainer = styled.div`
-  width: 50%;
+  width: 100%;
   height: auto;
+  text-align: center;
   overflow: hidden;
+  margin-right: 100px;
+  margin-left: 100px;
 `
 export const MainResultTracksContainer = styled.div`
   width: 40vw;
@@ -98,20 +102,15 @@ export const MainResultTracksWrap = styled.div`
 `
 
 export const MainResultBlankContainer = styled.div`
-  width: 100%;
-  white-space: nowrap;
   display: flex;
-  margin-left: 135px;
-  //margin-left: 7.5vw;
 `
 
 export const MainResultNoneBlankContainer = styled.div`
-  width: 100%;
-  margin-right: 140px;
+  /* width: 100%; */
+  width: auto;
+  width: 50vw;
+  margin-left: 6.5vw;
 `
-
-
-
 
 
 

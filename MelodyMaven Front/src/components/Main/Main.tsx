@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 import NavBar from '../common/NavBar/NavBar'
 import {
   MainPageContainer,
+  MainPageErrorWrap,
   MainPageRecommendForm,
   MainPageSmallIntroduce,
   MainPageUrlButton,
@@ -29,31 +30,28 @@ const Main = () => {
   const findArtists = (e: any) => {
     e.preventDefault()
 
-    if (!localStorage.getItem('token')) {
-      tokenCreate(false)
-    } else {
-      history(`?artist=${e.target.value.value}`)
-    }
+    history(`?artist=${e.target.value.value}`)
   }
 
   useEffect(() => {
+    tokenCreate(false)
+  }, [])
+
+  useEffect(() => {
     //@ts-expect-error
-    if (value.length !== 0) {
+    if (value.length !== 0 || error) {
       setCheckArtist(true)
     }
   }, [value])
 
-
   useEffect(() => {
-    console.log(location)
-      // setQuery(new URLSearchParams(window.location.search).get('artist') ?? '')
 
-      if(new URLSearchParams(window.location.search).get('artist') !== null) {
-        //@ts-expect-error
-        fetchValue(new URLSearchParams(window.location.search).get('artist'))
-      } else {
-        setCheckArtist(false)
-      }
+    if (new URLSearchParams(window.location.search).get('artist') !== null) {
+      //@ts-expect-error
+      fetchValue(new URLSearchParams(window.location.search).get('artist'))
+    } else {
+      setCheckArtist(false)
+    }
 
     // console.log(new URLSearchParams(window.location.search).get('aritst') )
   }, [location])
@@ -62,7 +60,7 @@ const Main = () => {
     <>
       <NavBar />
       <MainPageContainer>
-        {!checkArtist? (
+        {!checkArtist ? (
           <>
             <MaingPageRecommendTitle>MUSIC.MATCHMAKER</MaingPageRecommendTitle>
             <MainPageSmallIntroduce>{introduce}</MainPageSmallIntroduce>
@@ -75,7 +73,9 @@ const Main = () => {
             </MainPageRecommendForm>
             {error ? (
               <>
-                <div>asd</div>
+                <MainPageErrorWrap>
+                  It's an artist that doesn't exist.
+                </MainPageErrorWrap>
               </>
             ) : (
               <></>

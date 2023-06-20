@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { SlArrowDownCircle } from 'react-icons/sl'
+import { BiSolidErrorCircle } from 'react-icons/bi'
 
 export const MainPageContainer = styled.div`
   margin-left: auto;
@@ -20,7 +20,8 @@ export const MaingPageRecommendTitle = styled.p`
 `
 
 export const MainPageRecommendForm = styled.form`
-  height: 15vw;
+  margin-top: 140px;
+  height: 4vw;
   display: flex;
   justify-content: center;
   font-family: 'Pretendard-Bold';
@@ -95,4 +96,16 @@ export const MainPageUrlButton = styled.button`
     border: 1px solid gray;
     color: black;
   }
+`
+
+export const MainPageErrorWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-right: 15vw;
+  font-size: 0.8vw;
+  font-family: 'Pretendard-Thin';
+  color: red;
+`
+
+export const MainPageErrorImg = styled(BiSolidErrorCircle)`
 `

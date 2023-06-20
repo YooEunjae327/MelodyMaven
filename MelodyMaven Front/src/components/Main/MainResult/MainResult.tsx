@@ -50,8 +50,30 @@ const MainResult = (info: any) => {
   const [targetNumber, setTargetNumber] = useState(0)
   const slideRef = useRef<HTMLDivElement>(null)
 
-  const TOTAL_SLIDES = 3
-  const tesintg = ['a','2', '3','4']
+  const TOTAL_SLIDES = 19
+  const tesintg = ['1']
+  // const tesintg = [
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  //   '4',
+  // ]
 
 
   const BackMove = () => {
@@ -87,7 +109,7 @@ const MainResult = (info: any) => {
     useEffect(() => {
       if(slideRef.current !== null) {
         slideRef.current.style.transition = 'all 0.5s ease-in-out'
-        slideRef.current.style.transform = `translateX(-${currentSlide * 87}% )`
+        slideRef.current.style.transform = `translateX(-${currentSlide * 274}px )`
       }
     }, [currentSlide])
 
@@ -100,7 +122,7 @@ const MainResult = (info: any) => {
           {tesintg.map((value, index) => (
             <MainResultNoneBlankContainer>
               <MainResultGenresImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b"></MainResultGenresImg>
-              <MainResultGenres>ELECTRO SWING</MainResultGenres>
+              <MainResultGenres>ELECTRODD</MainResultGenres>
             </MainResultNoneBlankContainer>
           ))}
         </MainResultBlankContainer>
@@ -124,7 +146,7 @@ const MainResult = (info: any) => {
         </MainResultPlayBarWrap>
       </MainResultGenresContainer>
 
-      <MainResultTracksContainer>
+      {/* <MainResultTracksContainer>
         <MainResultTracksTitle>Popularity</MainResultTracksTitle>
         <MainResultTracksExplain>
           Even if I click it or turn it on, the song doesn't come out. It's
@@ -152,7 +174,7 @@ const MainResult = (info: any) => {
             <MainResultTracksTitleMusic>ToamtoLover</MainResultTracksTitleMusic>
           </MainResultTracksWrap>
         </MainResultTracksMusicWrap>
-      </MainResultTracksContainer>
+      </MainResultTracksContainer> */}
 
       {/* <MainResultImgWrap>
         <MainResultImgContainer>

@@ -14,18 +14,21 @@ export const useFindArtists = () => {
           }&token=${localStorage.getItem('token')}`
         )
         .then((res) => {
-          if(res.data.items.length === 0) {
-            setError(true)
-          }
-          else {
-            setValue(res.data.items)
+          if(res.data === "") {
+              tokenCreate(true)
+              fetchValue(query)
+          } else {
+            if(res.data.items.length === 0) {
+              setError(true)
+            }
+            else {
+              setValue(res.data.items)
+            }
           }
           
         })
         .catch((e) => {
           console.error(e)
-          tokenCreate(true)
-          fetchValue(e)
         })
 
     },
@@ -37,14 +40,17 @@ export const useFindArtists = () => {
 
 
 export const tokenCreate = async (expire : boolean) => {
-  if(expire) localStorage.clear()
-
+  
   try {
+    if(localStorage.getItem('token') !== null && !expire) return 
     const Response = await axios.get(
       `http://localhost:4000/recommend/spotify/token`
     )
-    //setUrlData(Response.data.list[0].text.split('.'))
+
+    
     localStorage.setItem('token', Response.data.token)
+
+    return
   } catch (Error) {
     return null
   }
