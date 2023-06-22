@@ -1,7 +1,9 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import NavBar from '../common/NavBar/NavBar'
 import {
   MainPageContainer,
+  MainPageErrorContent,
+  MainPageErrorImg,
   MainPageErrorWrap,
   MainPageRecommendForm,
   MainPageSmallIntroduce,
@@ -22,7 +24,9 @@ const Main = () => {
   // Find Artsits funtion
   const [checkArtist, setCheckArtist] = useState(false)
   const [value, error, fetchValue] = useFindArtists()
-  const [query, setQuery] = useState('')
+
+  // Error line Ref
+  const errorRef = useRef<HTMLInputElement>(null)
 
   const history = useNavigate()
   const location = useLocation()
@@ -36,6 +40,14 @@ const Main = () => {
   useEffect(() => {
     tokenCreate(false)
   }, [])
+
+  useEffect(() => {
+    if(error) {
+      if(errorRef.current != null) {
+        errorRef.current.style.borderColor = 'red'
+      }
+    }
+  }, [error] )
 
   useEffect(() => {
     //@ts-expect-error
@@ -68,13 +80,17 @@ const Main = () => {
               <MainPageUrlInput
                 name="value"
                 placeholder="Please enter the artist you want here.."
+                ref={errorRef}
               ></MainPageUrlInput>
               <MainPageUrlButton type="submit">Submit</MainPageUrlButton>
             </MainPageRecommendForm>
             {error ? (
               <>
                 <MainPageErrorWrap>
-                  It's an artist that doesn't exist.
+                  <MainPageErrorImg></MainPageErrorImg>
+                  <MainPageErrorContent>
+                    It's an artist that doesn't exist.
+                  </MainPageErrorContent>
                 </MainPageErrorWrap>
               </>
             ) : (

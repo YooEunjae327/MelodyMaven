@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { BiSolidErrorCircle } from 'react-icons/bi'
+import { MdError } from 'react-icons/md'
 
 export const MainPageContainer = styled.div`
   margin-left: auto;
@@ -62,9 +62,6 @@ export const MainPageUrlInput = styled.input`
   display: flex;
   cursor: pointer;
 
-  ::placeholder {
-    color: gray;
-  }
 
   :focus {
     outline: none;
@@ -101,11 +98,17 @@ export const MainPageUrlButton = styled.button`
 export const MainPageErrorWrap = styled.div`
   display: flex;
   justify-content: center;
-  padding-right: 15vw;
-  font-size: 0.8vw;
-  font-family: 'Pretendard-Thin';
+  padding-right: 15vw;  
   color: red;
 `
 
-export const MainPageErrorImg = styled(BiSolidErrorCircle)`
+export const MainPageErrorContent = styled.p`
+  margin-left: 5px;
+  font-size: 0.8vw;
+  font-family: 'Pretendard-Thin';
+`
+
+export const MainPageErrorImg = styled(MdError)`
+  width: 20px;
+  height: 20px;
 `

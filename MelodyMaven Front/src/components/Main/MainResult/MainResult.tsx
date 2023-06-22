@@ -11,6 +11,13 @@ import {
   MainResultBlankContainer,
   MainResultButtonWrap,
   MainResultContainer,
+  MainResultContent,
+  MainResultContentBoxContainer,
+  MainResultContentBoxWrap,
+  MainResultContentFollowers,
+  MainResultContentGenre,
+  MainResultContentTitle,
+  MainResultContentWrap,
   MainResultGenres,
   MainResultGenresContainer,
   MainResultGenresImg,
@@ -22,6 +29,7 @@ import {
   MainResultImgSideContainer,
   MainResultImgWrap,
   MainResultLeftButton,
+  MainResultLeftMoveButton,
   MainResultLine,
   MainResultNoneBlankContainer,
   MainResultPlayBar,
@@ -51,7 +59,7 @@ const MainResult = (info: any) => {
   const slideRef = useRef<HTMLDivElement>(null)
 
   const TOTAL_SLIDES = 19
-  const tesintg = ['1']
+  const tesintg = [ '1']
   // const tesintg = [
   //   '4',
   //   '4',
@@ -116,7 +124,28 @@ const MainResult = (info: any) => {
 
   return (
     <MainResultContainer>
-      <MainResultGenresContainer>
+      <MainResultLeftMoveButton></MainResultLeftMoveButton>
+      <MainResultTracksImg src="https://i.scdn.co/image/ab6761610000e5ebb454780a41c24b4356dd7a4b" />
+      <MainResultContentWrap>
+        <MainResultContentTitle>Jamime Berry</MainResultContentTitle>
+        <MainResultContent>Artist</MainResultContent>
+
+        <br />
+
+        <MainResultContentGenre>
+          {' '}
+          Jamie Berry mainly makes genre songs for electroswing. His best album
+          is 'tomato'. It also has 60,000 followers and has 47 out of 100
+          popularity points. There are artists similar to this below, so please
+          refer to it and listen to it together if you like it. :)
+        </MainResultContentGenre>
+        {/* <MainResultContentBoxContainer>
+          <MainResultContentBoxWrap>Followers</MainResultContentBoxWrap>
+          <MainResultContentBoxWrap>Followers</MainResultContentBoxWrap>
+          <MainResultContentBoxWrap>Followers</MainResultContentBoxWrap>
+        </MainResultContentBoxContainer> */}
+      </MainResultContentWrap>
+      {/* <MainResultGenresContainer>
 
         <MainResultBlankContainer ref={slideRef}>
           {tesintg.map((value, index) => (
@@ -144,7 +173,7 @@ const MainResult = (info: any) => {
           </MainResultPlayBarInWrap>
           <MainResultPlayBarTime>3:20</MainResultPlayBarTime>
         </MainResultPlayBarWrap>
-      </MainResultGenresContainer>
+      </MainResultGenresContainer> */}
 
       {/* <MainResultTracksContainer>
         <MainResultTracksTitle>Popularity</MainResultTracksTitle>

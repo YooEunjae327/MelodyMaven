@@ -2,21 +2,102 @@ import styled from 'styled-components'
 import { BsSpotify, BsYoutube } from 'react-icons/bs'
 import { AiFillPlayCircle } from 'react-icons/ai'
 import { IoPlaySkipBack } from 'react-icons/io5'
-
-
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
+
 export const MainResultContainer = styled.div`
- 
   padding-bottom: 40px;
+  padding-top: 100px;
   width: 100%;
-  min-height: 1000px;
+  min-height: 800px;
   background-color: beige;
   display: flex;
   text-align: center;
-
+  justify-content: center;
+  
 `
+
+export const MainResultTracksImg = styled.img`
+  width: 30vw;
+  height: 30vw;
+  border-radius: 1px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`
+
+export const MainResultContentWrap = styled.div`
+  margin-left: 20px;
+  width: 1000px;
+  height: 400px;
+  display: block;
+  text-align: left;
+  color: black;
+  `
+
+export const MainResultContent = styled.span`
+  font-size: 80px;
+  font-family: 'Pretendard-Bold';
+  /* border: 1px solid black; */
+`
+
+export const MainResultContentTitle = styled.p`
+  font-size: 140px;
+  text-align: center;
+  background-color: black;
+  color: beige;
+  font-family: 'Pretendard-Bold';
+`
+
+export const MainResultContentFollowers = styled.span`
+  background-color: black;
+  color: beige;
+  font-size: 80px;
+  font-family: 'Pretendard-Bold';
+`
+export const MainResultContentBoxContainer = styled.div` 
+  margin-top: 50px;
+  display: flex;
+  width: auto;
+  height: auto;
+`
+
+export const MainResultContentBoxWrap = styled.div`
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 250px;
+  font-size: 20px;
+  background-color: black;
+  color: beige;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`
+
+
+export const MainResultContentGenre = styled.p`
+  font-size: 30px;
+  color: gray;
+  font-family: 'Pretendard-Thin';
+`
+
+export const MainResultLeftMoveButton = styled(MdKeyboardArrowLeft)`
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 80px;
+  width: 60px;
+  height: 60px;
+`
+
+
+
+
+
+
+
 
 
 export const MainResultGenresContainer = styled.div`
@@ -68,12 +149,7 @@ export const MainResultTracksTitleMusic = styled.p`
   font-family: 'Pretendard-Bold';
 `
 
-export const MainResultTracksImg = styled.img`
-  width: 12vw;
-  height: 12vw;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`
+
 
 export const MainResultTracksExplain = styled.p`
   margin-top: 10px;

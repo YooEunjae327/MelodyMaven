@@ -9,45 +9,38 @@ export const useFindArtists = () => {
     (query: String) => {
       axios
         .get(
-          `http://localhost:4000/recommend/spotify?artist=${
-            query
-          }&token=${localStorage.getItem('token')}`
+          `/recommend/spotify?artist=${query}&token=${localStorage.getItem(
+            'token'
+          )}`
         )
         .then((res) => {
-          if(res.data === "") {
-              tokenCreate(true)
-              fetchValue(query)
+          if (res.data === '') {
+            tokenCreate(true)
+            fetchValue(query)
           } else {
-            if(res.data.items.length === 0) {
+            if (res.data.items.length === 0) {
               setError(true)
-            }
-            else {
+            } else {
               setValue(res.data.items)
             }
           }
-          
         })
         .catch((e) => {
           console.error(e)
         })
-
     },
     [value, error]
   )
   return [value, error, fetchValue]
 }
 
-
-
-export const tokenCreate = async (expire : boolean) => {
-  
+export const tokenCreate = async (expire: boolean) => {
   try {
-    if(localStorage.getItem('token') !== null && !expire) return 
+    if (localStorage.getItem('token') !== null && !expire) return
     const Response = await axios.get(
-      `http://localhost:4000/recommend/spotify/token`
+      `/recommend/spotify/token`
     )
 
-    
     localStorage.setItem('token', Response.data.token)
 
     return
